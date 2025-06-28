@@ -39,7 +39,7 @@ The app features two main screens:
 
    ```bash
    git clone <repository-url>
-   cd card-share
+   cd share-event
    ```
 
 2. **Install dependencies**
@@ -51,22 +51,32 @@ The app features two main screens:
 3. **Start the development server**
 
    ```bash
-   npm start
+   npx expo start
    ```
+
+   After this just install the expo app on your phone and scan the QR code. Make sure your phone and laptop connected to same wifi.
 
 4. **Run on your preferred platform**
 
    ```bash
    # iOS
-   npm run ios
+   i for ios
 
    # Android
-   npm run android
+   a for android
 
    # Web
-   npm run web
+   w for web
    ```
 
+APK: **For APK**
+
+```bash
+# if you have already not insatlled eas-cli then
+npm install -g eas-cli
+# if you have already insalled eas-cli then
+eas login
+npx eas build --platform android --profile preview
 ## 🔧 Configuration
 
 ### Permissions
@@ -103,9 +113,9 @@ Make sure you have the following installed:
 1. **View Created Cards**: All created cards appear in the "Your Events" section
 2. **Share Card**: Tap "Share Card" on any event card
 3. **Automatic Processing**: The app will:
-   - Capture the card as a high-quality image
-   - Save it to your device's photo library
-   - Open the native sharing dialog
+- Capture the card as a high-quality image
+- Save it to your device's photo library
+- Open the native sharing dialog
 4. **Post to Social Media**: Choose your preferred platform (Instagram, Facebook, Twitter, etc.)
 
 ## 🎨 Design System
@@ -145,20 +155,22 @@ The app uses React's built-in state management:
 ## 📁 Project Structure
 
 ```
+
 card-share/
 ├── app/
-│   ├── (tabs)/
-│   │   ├── index.tsx          # Main event creation screen
-│   │   ├── explore.tsx        # Features and tips screen
-│   │   └── _layout.tsx        # Tab navigation layout
-│   └── _layout.tsx            # Root layout
-├── components/                # Reusable UI components
+│ ├── (tabs)/
+│ │ ├── index.tsx # Main event creation screen
+│ │ ├── explore.tsx # Features and tips screen
+│ │ └── \_layout.tsx # Tab navigation layout
+│ └── \_layout.tsx # Root layout
+├── components/ # Reusable UI components
 ├── hooks/
-│   └── useCardSharing.ts      # Custom hook for card sharing
-├── constants/                 # App constants
-├── assets/                    # Images and static resources
+│ └── useCardSharing.ts # Custom hook for card sharing
+├── constants/ # App constants
+├── assets/ # Images and static resources
 └── package.json
-```
+
+````
 
 ## 🚀 Deployment
 
@@ -173,50 +185,6 @@ card-share/
 
    # For Android
    eas build --platform android
-   ```
-
-### App Store Deployment
-
-1. **Create EAS account** and configure credentials
-2. **Submit to stores**:
-   ```bash
-   eas submit --platform ios
-   eas submit --platform android
-   ```
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Add tests if applicable
-5. Submit a pull request
-
-## 📄 License
-
-This project is licensed under the MIT License.
-
-## 🆘 Support
-
-For support and questions:
-
-- Create an issue in the repository
-- Check the Expo documentation
-- Review the React Native documentation
-
-## 🔮 Future Enhancements
-
-- [ ] Add more event categories
-- [ ] Custom card templates
-- [ ] Event scheduling functionality
-- [ ] Cloud storage for cards
-- [ ] Social features (likes, comments)
-- [ ] Dark mode support
-- [ ] Offline functionality
-- [ ] Push notifications
-- [ ] Event reminders
-- [ ] Calendar integration
-
----
+````
 
 **Built with ❤️ using React Native and Expo**
