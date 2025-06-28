@@ -1,75 +1,895 @@
-import { Image } from 'expo-image';
-import { Platform, StyleSheet } from 'react-native';
+import { useCardSharing } from "@/hooks/useCardSharing";
+import { Ionicons } from "@expo/vector-icons";
+import DateTimePicker from "@react-native-community/datetimepicker";
+import React, { useState } from "react";
+import {
+  Alert,
+  Dimensions,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { moderateScale, scale, verticalScale } from "react-native-size-matters";
+import ViewShot from "react-native-view-shot";
 
-import { HelloWave } from '@/components/HelloWave';
-import ParallaxScrollView from '@/components/ParallaxScrollView';
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
+interface Event {
+  id: string;
+  name: string;
+  category: string;
+  rating: number;
+  date: string;
+  customDate: Date;
+}
 
 export default function HomeScreen() {
+  const [events, setEvents] = useState<Event[]>([]);
+  const [eventName, setEventName] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("");
+  const [selectedRating, setSelectedRating] = useState(0);
+  const [customDate, setCustomDate] = useState(new Date());
+  const [showDatePicker, setShowDatePicker] = useState(false);
+  const [selectedEventForSharing, setSelectedEventForSharing] =
+    useState<Event | null>(null);
+
+  const { isCreating, viewShotRef, captureAndShare } = useCardSharing();
+
+  const categories = [
+    {
+      id: "fitness",
+      name: "Fitness",
+      icon: "fitness",
+      gradient: ["#FF6B6B", "#FF8E53"],
+    },
+    {
+      id: "running",
+      name: "Running",
+      icon: "walk",
+      gradient: ["#4ECDC4", "#44A08D"],
+    },
+    {
+      id: "party",
+      name: "Party",
+      icon: "wine",
+      gradient: ["#A8E6CF", "#7FCDCD"],
+    },
+    {
+      id: "workout",
+      name: "Workout",
+      icon: "barbell",
+      gradient: ["#FFD93D", "#FF6B6B"],
+    },
+    {
+      id: "yoga",
+      name: "Yoga",
+      icon: "body",
+      gradient: ["#6C5CE7", "#A29BFE"],
+    },
+    {
+      id: "swimming",
+      name: "Swimming",
+      icon: "water",
+      gradient: ["#74B9FF", "#0984E3"],
+    },
+  ];
+
+  const handleCategorySelect = (categoryId: string) => {
+    setSelectedCategory(categoryId);
+  };
+
+  const handleRatingSelect = (rating: number) => {
+    setSelectedRating(rating);
+  };
+
+  const handleDateChange = (event: any, selectedDate?: Date) => {
+    setShowDatePicker(false);
+    if (selectedDate) {
+      setCustomDate(selectedDate);
+    }
+  };
+
+  const showDatePickerModal = () => {
+    setShowDatePicker(true);
+  };
+
+  const formatDate = (date: Date) => {
+    return date.toLocaleDateString("en-US", {
+      weekday: "long",
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    });
+  };
+
+  const handleCreateEvent = () => {
+    if (!eventName.trim()) {
+      Alert.alert("Error", "Please enter an event name");
+      return;
+    }
+    if (!selectedCategory) {
+      Alert.alert("Error", "Please select a category");
+      return;
+    }
+    if (selectedRating === 0) {
+      Alert.alert("Error", "Please select a rating");
+      return;
+    }
+
+    const newEvent: Event = {
+      id: Date.now().toString(),
+      name: eventName.trim(),
+      category: selectedCategory,
+      rating: selectedRating,
+      date: formatDate(customDate),
+      customDate: customDate,
+    };
+
+    setEvents([newEvent, ...events]);
+    setEventName("");
+    setSelectedCategory("");
+    setSelectedRating(0);
+    setCustomDate(new Date());
+    Alert.alert("Success", "Event card created successfully!");
+  };
+
+  const getCategoryIcon = (categoryId: string) => {
+    const category = categories.find((cat) => cat.id === categoryId);
+    return category?.icon || "help-circle";
+  };
+
+  const getCategoryName = (categoryId: string) => {
+    const category = categories.find((cat) => cat.id === categoryId);
+    return category?.name || "Event";
+  };
+
+  const getCategoryGradient = (categoryId: string) => {
+    const category = categories.find((cat) => cat.id === categoryId);
+    return category?.gradient || ["#4361EE", "#3F37C9"];
+  };
+
+  const renderStars = (
+    rating: number,
+    interactive = false,
+    onPress?: (rating: number) => void
+  ) => {
+    return (
+      <View style={styles.starsContainer}>
+        {[1, 2, 3, 4, 5].map((star) => (
+          <TouchableOpacity
+            key={star}
+            onPress={() => interactive && onPress?.(star)}
+            disabled={!interactive}
+            style={styles.starButton}
+          >
+            <Ionicons
+              name={star <= rating ? "star" : "star-outline"}
+              size={moderateScale(24)}
+              color={star <= rating ? "#FFD700" : "#E0E0E0"}
+            />
+          </TouchableOpacity>
+        ))}
+      </View>
+    );
+  };
+
+  const handleShareEvent = async (event: Event) => {
+    setSelectedEventForSharing(event);
+    // Small delay to ensure state is updated before capture
+    setTimeout(() => {
+      captureAndShare(event, () => {
+        setSelectedEventForSharing(null);
+      });
+    }, 100);
+  };
+
+  const renderEventCard = (event: Event) => {
+    const gradient = getCategoryGradient(event.category);
+
+    return (
+      <View key={event.id} style={styles.eventCard}>
+        <View style={[styles.cardHeader, { backgroundColor: gradient[0] }]}>
+          <View style={styles.cardHeaderContent}>
+            <View style={styles.categoryBadge}>
+              <Ionicons
+                name={getCategoryIcon(event.category) as any}
+                size={moderateScale(16)}
+                color="#FFF"
+              />
+              <Text style={styles.categoryText}>
+                {getCategoryName(event.category)}
+              </Text>
+            </View>
+            <View style={styles.cardTitleContainer}>
+              <Text style={styles.cardTitle}>{event.name}</Text>
+              <Text style={styles.cardDate}>{event.date}</Text>
+            </View>
+            <View style={styles.cardDecoration}>
+              <View style={styles.decorationCircle} />
+              <View style={styles.decorationLine} />
+            </View>
+          </View>
+        </View>
+        <View style={styles.cardBody}>
+          <View style={styles.ratingContainer}>
+            {renderStars(event.rating)}
+            <Text style={styles.ratingText}>{event.rating}.0</Text>
+          </View>
+          <View style={styles.cardFooter}>
+            <View style={styles.eventDetails}>
+              <View style={styles.detailItem}>
+                <Ionicons
+                  name="calendar"
+                  size={moderateScale(16)}
+                  color="#6B7280"
+                />
+                <Text style={styles.detailText}>Event Date</Text>
+              </View>
+              <View style={styles.detailItem}>
+                <Ionicons
+                  name="star"
+                  size={moderateScale(16)}
+                  color="#6B7280"
+                />
+                <Text style={styles.detailText}>Rating</Text>
+              </View>
+            </View>
+            <TouchableOpacity
+              style={[styles.shareButton, { backgroundColor: gradient[1] }]}
+              onPress={() => handleShareEvent(event)}
+              disabled={isCreating}
+            >
+              <Ionicons
+                name="share-social"
+                size={moderateScale(20)}
+                color="#FFF"
+              />
+              <Text style={styles.shareButtonText}>
+                {isCreating && selectedEventForSharing?.id === event.id
+                  ? "Creating..."
+                  : "Share Card"}
+              </Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </View>
+    );
+  };
+
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
-        <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
+    <SafeAreaView style={styles.container}>
+      <ScrollView showsVerticalScrollIndicator={false}>
+        {/* Header */}
+        <View style={styles.header}>
+          <View style={styles.headerIconContainer}>
+            <Ionicons
+              name="calendar"
+              size={moderateScale(32)}
+              color="#4361EE"
+            />
+          </View>
+          <Text style={styles.headerTitle}>Event Planner</Text>
+          <Text style={styles.headerSubtitle}>
+            Create & share beautiful event cards
+          </Text>
+        </View>
+
+        <View style={styles.content}>
+          {/* Control Panel */}
+          <View style={styles.controlPanel}>
+            <Text style={styles.panelTitle}>Create Event</Text>
+
+            <View style={styles.formGroup}>
+              <Text style={styles.label}>Activity Name</Text>
+              <TextInput
+                style={styles.input}
+                value={eventName}
+                onChangeText={setEventName}
+                placeholder="Enter event name"
+                placeholderTextColor="#9CA3AF"
+              />
+            </View>
+
+            <View style={styles.formGroup}>
+              <Text style={styles.label}>Category</Text>
+              <View style={styles.categoryGrid}>
+                {categories.map((category) => (
+                  <TouchableOpacity
+                    key={category.id}
+                    style={[
+                      styles.categoryButton,
+                      selectedCategory === category.id &&
+                        styles.categoryButtonActive,
+                    ]}
+                    onPress={() => handleCategorySelect(category.id)}
+                  >
+                    <Ionicons
+                      name={category.icon as any}
+                      size={moderateScale(20)}
+                      color={
+                        selectedCategory === category.id ? "#FFF" : "#4361EE"
+                      }
+                    />
+                    <Text
+                      style={[
+                        styles.categoryButtonText,
+                        selectedCategory === category.id &&
+                          styles.categoryButtonTextActive,
+                      ]}
+                    >
+                      {category.name}
+                    </Text>
+                  </TouchableOpacity>
+                ))}
+              </View>
+            </View>
+
+            <View style={styles.formGroup}>
+              <Text style={styles.label}>Event Date</Text>
+              <TouchableOpacity
+                style={styles.dateButton}
+                onPress={showDatePickerModal}
+              >
+                <Ionicons
+                  name="calendar-outline"
+                  size={moderateScale(20)}
+                  color="#4361EE"
+                />
+                <Text style={styles.dateButtonText}>
+                  {formatDate(customDate)}
+                </Text>
+                <Ionicons
+                  name="chevron-down"
+                  size={moderateScale(16)}
+                  color="#6B7280"
+                />
+              </TouchableOpacity>
+            </View>
+
+            <View style={styles.formGroup}>
+              <Text style={styles.label}>Rating</Text>
+              {renderStars(selectedRating, true, handleRatingSelect)}
+            </View>
+
+            <TouchableOpacity
+              style={styles.createButton}
+              onPress={handleCreateEvent}
+            >
+              <Ionicons
+                name="add-circle"
+                size={moderateScale(24)}
+                color="#FFF"
+              />
+              <Text style={styles.createButtonText}>Create Event Card</Text>
+            </TouchableOpacity>
+          </View>
+
+          {/* Events Section */}
+          <View style={styles.eventsSection}>
+            <View style={styles.eventsHeader}>
+              <Text style={styles.eventsTitle}>Your Events</Text>
+              <View style={styles.eventsCount}>
+                <Text style={styles.eventsCountText}>
+                  {events.length} events
+                </Text>
+              </View>
+            </View>
+
+            {events.length === 0 ? (
+              <View style={styles.noEvents}>
+                <Ionicons
+                  name="calendar-outline"
+                  size={moderateScale(64)}
+                  color="#E5E7EB"
+                />
+                <Text style={styles.noEventsTitle}>No events created yet</Text>
+                <Text style={styles.noEventsSubtitle}>
+                  Create your first event using the panel above
+                </Text>
+              </View>
+            ) : (
+              <View style={styles.eventsContainer}>
+                {events.map(renderEventCard)}
+              </View>
+            )}
+          </View>
+        </View>
+      </ScrollView>
+
+      {/* Date Picker Modal */}
+      {showDatePicker && (
+        <DateTimePicker
+          value={customDate}
+          mode="date"
+          display="default"
+          onChange={handleDateChange}
+          minimumDate={new Date()}
         />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({
-              ios: 'cmd + d',
-              android: 'cmd + m',
-              web: 'F12',
-            })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-        <ThemedText>
-          {`Tap the Explore tab to learn more about what's included in this starter app.`}
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          {`When you're ready, run `}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
+      )}
+
+      {/* Hidden ViewShot for capturing cards */}
+      <ViewShot
+        ref={viewShotRef}
+        style={styles.hiddenCard}
+        options={{
+          format: "png",
+          quality: 0.9,
+          width: scale(350),
+          height: verticalScale(450),
+        }}
+      >
+        {selectedEventForSharing && (
+          <View style={styles.captureCard}>
+            <View
+              style={[
+                styles.captureHeader,
+                {
+                  backgroundColor: getCategoryGradient(
+                    selectedEventForSharing.category
+                  )[0],
+                },
+              ]}
+            >
+              <View style={styles.captureHeaderContent}>
+                <View style={styles.captureCategoryBadge}>
+                  <Ionicons
+                    name={
+                      getCategoryIcon(selectedEventForSharing.category) as any
+                    }
+                    size={moderateScale(16)}
+                    color="#FFF"
+                  />
+                  <Text style={styles.captureCategoryText}>
+                    {getCategoryName(selectedEventForSharing.category)}
+                  </Text>
+                </View>
+                <Text style={styles.captureTitle}>
+                  {selectedEventForSharing.name}
+                </Text>
+                <Text style={styles.captureDate}>
+                  {selectedEventForSharing.date}
+                </Text>
+                <View style={styles.captureDecoration}>
+                  <View style={styles.captureDecorationCircle} />
+                  <View style={styles.captureDecorationLine} />
+                </View>
+              </View>
+            </View>
+            <View style={styles.captureBody}>
+              <View style={styles.captureRatingContainer}>
+                {renderStars(selectedEventForSharing.rating)}
+                <Text style={styles.captureRatingText}>
+                  {selectedEventForSharing.rating}.0
+                </Text>
+              </View>
+              <View style={styles.captureFooter}>
+                <Text style={styles.captureFooterText}>
+                  Created with Event Planner
+                </Text>
+                <View style={styles.captureLogo}>
+                  <Ionicons
+                    name="calendar"
+                    size={moderateScale(16)}
+                    color="#4361EE"
+                  />
+                </View>
+              </View>
+            </View>
+          </View>
+        )}
+      </ViewShot>
+    </SafeAreaView>
   );
 }
 
+const { width, height } = Dimensions.get("window");
+
 const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
+  container: {
+    flex: 1,
+    backgroundColor: "#F8FAFC",
   },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
+  header: {
+    alignItems: "center",
+    paddingVertical: verticalScale(20),
+    paddingHorizontal: scale(20),
   },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
+  headerIconContainer: {
+    width: scale(64),
+    height: scale(64),
+    borderRadius: moderateScale(32),
+    backgroundColor: "#EDF2FF",
+    alignItems: "center",
+    justifyContent: "center",
+    marginBottom: verticalScale(12),
+  },
+  headerTitle: {
+    fontSize: moderateScale(28),
+    fontWeight: "bold",
+    color: "#4361EE",
+    marginBottom: verticalScale(4),
+  },
+  headerSubtitle: {
+    fontSize: moderateScale(16),
+    color: "#6B7280",
+    textAlign: "center",
+  },
+  content: {
+    paddingHorizontal: scale(20),
+  },
+  controlPanel: {
+    backgroundColor: "#FFFFFF",
+    borderRadius: moderateScale(16),
+    padding: scale(20),
+    marginBottom: verticalScale(20),
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 8,
+    elevation: 4,
+  },
+  panelTitle: {
+    fontSize: moderateScale(20),
+    fontWeight: "bold",
+    color: "#4361EE",
+    marginBottom: verticalScale(20),
+  },
+  formGroup: {
+    marginBottom: verticalScale(20),
+  },
+  label: {
+    fontSize: moderateScale(16),
+    fontWeight: "600",
+    color: "#374151",
+    marginBottom: verticalScale(8),
+  },
+  input: {
+    borderWidth: 2,
+    borderColor: "#E5E7EB",
+    borderRadius: moderateScale(10),
+    paddingHorizontal: scale(16),
+    paddingVertical: verticalScale(12),
+    fontSize: moderateScale(16),
+    color: "#374151",
+  },
+  categoryGrid: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    gap: scale(10),
+  },
+  categoryButton: {
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: "#F3F4F6",
+    paddingHorizontal: scale(12),
+    paddingVertical: verticalScale(8),
+    borderRadius: moderateScale(8),
+    minWidth: scale(80),
+    justifyContent: "center",
+    gap: scale(4),
+  },
+  categoryButtonActive: {
+    backgroundColor: "#4361EE",
+  },
+  categoryButtonText: {
+    fontSize: moderateScale(14),
+    fontWeight: "600",
+    color: "#4361EE",
+  },
+  categoryButtonTextActive: {
+    color: "#FFFFFF",
+  },
+  dateButton: {
+    flexDirection: "row",
+    alignItems: "center",
+    borderWidth: 2,
+    borderColor: "#E5E7EB",
+    borderRadius: moderateScale(10),
+    paddingHorizontal: scale(16),
+    paddingVertical: verticalScale(12),
+    gap: scale(8),
+  },
+  dateButtonText: {
+    fontSize: moderateScale(16),
+    color: "#374151",
+    flex: 1,
+  },
+  starsContainer: {
+    flexDirection: "row",
+    gap: scale(4),
+  },
+  starButton: {
+    padding: scale(2),
+  },
+  createButton: {
+    backgroundColor: "#4361EE",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    paddingVertical: verticalScale(16),
+    borderRadius: moderateScale(10),
+    gap: scale(8),
+    shadowColor: "#4361EE",
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.3,
+    shadowRadius: 8,
+    elevation: 6,
+  },
+  createButtonText: {
+    fontSize: moderateScale(18),
+    fontWeight: "bold",
+    color: "#FFFFFF",
+  },
+  eventsSection: {
+    backgroundColor: "#FFFFFF",
+    borderRadius: moderateScale(16),
+    padding: scale(20),
+    marginBottom: verticalScale(20),
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 8,
+    elevation: 4,
+  },
+  eventsHeader: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    marginBottom: verticalScale(20),
+  },
+  eventsTitle: {
+    fontSize: moderateScale(20),
+    fontWeight: "bold",
+    color: "#4361EE",
+  },
+  eventsCount: {
+    backgroundColor: "#EDF2FF",
+    paddingHorizontal: scale(12),
+    paddingVertical: verticalScale(4),
+    borderRadius: moderateScale(20),
+  },
+  eventsCountText: {
+    fontSize: moderateScale(14),
+    fontWeight: "600",
+    color: "#4361EE",
+  },
+  noEvents: {
+    alignItems: "center",
+    paddingVertical: verticalScale(40),
+  },
+  noEventsTitle: {
+    fontSize: moderateScale(18),
+    fontWeight: "600",
+    color: "#6B7280",
+    marginTop: verticalScale(16),
+  },
+  noEventsSubtitle: {
+    fontSize: moderateScale(14),
+    color: "#9CA3AF",
+    marginTop: verticalScale(8),
+    textAlign: "center",
+  },
+  eventsContainer: {
+    gap: verticalScale(16),
+  },
+  eventCard: {
+    backgroundColor: "#FFFFFF",
+    borderRadius: moderateScale(16),
+    overflow: "hidden",
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.15,
+    shadowRadius: 12,
+    elevation: 8,
+  },
+  cardHeader: {
+    padding: scale(20),
+    position: "relative",
+  },
+  cardHeaderContent: {
+    position: "relative",
+    zIndex: 2,
+  },
+  categoryBadge: {
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: "rgba(255, 255, 255, 0.2)",
+    paddingHorizontal: scale(8),
+    paddingVertical: verticalScale(4),
+    borderRadius: moderateScale(12),
+    alignSelf: "flex-start",
+    marginBottom: verticalScale(12),
+    gap: scale(4),
+  },
+  categoryText: {
+    fontSize: moderateScale(12),
+    fontWeight: "600",
+    color: "#FFFFFF",
+  },
+  cardTitleContainer: {
+    marginBottom: verticalScale(8),
+  },
+  cardTitle: {
+    fontSize: moderateScale(22),
+    fontWeight: "bold",
+    color: "#FFFFFF",
+    marginBottom: verticalScale(4),
+  },
+  cardDate: {
+    fontSize: moderateScale(14),
+    color: "rgba(255, 255, 255, 0.9)",
+  },
+  cardDecoration: {
+    position: "absolute",
+    top: -10,
+    right: -10,
+    zIndex: 1,
+  },
+  decorationCircle: {
+    width: scale(40),
+    height: scale(40),
+    borderRadius: moderateScale(20),
+    backgroundColor: "rgba(255, 255, 255, 0.1)",
+    marginBottom: verticalScale(8),
+  },
+  decorationLine: {
+    width: scale(2),
+    height: verticalScale(20),
+    backgroundColor: "rgba(255, 255, 255, 0.1)",
+    alignSelf: "center",
+  },
+  cardBody: {
+    padding: scale(20),
+  },
+  ratingContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginBottom: verticalScale(20),
+    gap: scale(8),
+  },
+  ratingText: {
+    fontSize: moderateScale(16),
+    fontWeight: "600",
+    color: "#374151",
+  },
+  cardFooter: {
+    gap: verticalScale(12),
+  },
+  eventDetails: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginBottom: verticalScale(8),
+  },
+  detailItem: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: scale(4),
+  },
+  detailText: {
+    fontSize: moderateScale(12),
+    color: "#6B7280",
+  },
+  shareButton: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    paddingVertical: verticalScale(12),
+    borderRadius: moderateScale(8),
+    gap: scale(8),
+  },
+  shareButtonText: {
+    fontSize: moderateScale(16),
+    fontWeight: "600",
+    color: "#FFFFFF",
+  },
+  hiddenCard: {
+    position: "absolute",
+    left: -1000,
+    top: -1000,
+  },
+  captureCard: {
+    width: scale(350),
+    height: verticalScale(450),
+    backgroundColor: "#FFFFFF",
+    borderRadius: moderateScale(16),
+    overflow: "hidden",
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.2,
+    shadowRadius: 12,
+    elevation: 8,
+  },
+  captureHeader: {
+    padding: scale(20),
+    flex: 1,
+    position: "relative",
+  },
+  captureHeaderContent: {
+    position: "relative",
+    zIndex: 2,
+  },
+  captureCategoryBadge: {
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: "rgba(255, 255, 255, 0.2)",
+    paddingHorizontal: scale(8),
+    paddingVertical: verticalScale(4),
+    borderRadius: moderateScale(12),
+    alignSelf: "flex-start",
+    marginBottom: verticalScale(12),
+    gap: scale(4),
+  },
+  captureCategoryText: {
+    fontSize: moderateScale(12),
+    fontWeight: "600",
+    color: "#FFFFFF",
+  },
+  captureTitle: {
+    fontSize: moderateScale(26),
+    fontWeight: "bold",
+    color: "#FFFFFF",
+    marginBottom: verticalScale(4),
+  },
+  captureDate: {
+    fontSize: moderateScale(16),
+    color: "rgba(255, 255, 255, 0.9)",
+  },
+  captureDecoration: {
+    position: "absolute",
+    top: -10,
+    right: -10,
+    zIndex: 1,
+  },
+  captureDecorationCircle: {
+    width: scale(40),
+    height: scale(40),
+    borderRadius: moderateScale(20),
+    backgroundColor: "rgba(255, 255, 255, 0.1)",
+    marginBottom: verticalScale(8),
+  },
+  captureDecorationLine: {
+    width: scale(2),
+    height: verticalScale(20),
+    backgroundColor: "rgba(255, 255, 255, 0.1)",
+    alignSelf: "center",
+  },
+  captureBody: {
+    padding: scale(20),
+    flex: 1,
+    justifyContent: "space-between",
+  },
+  captureRatingContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: scale(8),
+  },
+  captureRatingText: {
+    fontSize: moderateScale(18),
+    fontWeight: "600",
+    color: "#374151",
+  },
+  captureFooter: {
+    alignItems: "center",
+    paddingTop: verticalScale(16),
+    borderTopWidth: 1,
+    borderTopColor: "#E5E7EB",
+    flexDirection: "row",
+    justifyContent: "center",
+    gap: scale(8),
+  },
+  captureFooterText: {
+    fontSize: moderateScale(12),
+    color: "#6B7280",
+    fontStyle: "italic",
+  },
+  captureLogo: {
+    width: scale(24),
+    height: scale(24),
+    borderRadius: moderateScale(12),
+    backgroundColor: "#EDF2FF",
+    alignItems: "center",
+    justifyContent: "center",
   },
 });

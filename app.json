@@ -1,22 +1,27 @@
 {
   "expo": {
-    "name": "card-share",
-    "slug": "card-share",
+    "name": "Event Planner",
+    "slug": "event-planner",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "cardshare",
+    "scheme": "eventplanner",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSPhotoLibraryAddUsageDescription": "This app needs access to save event cards to your photo library.",
+        "NSPhotoLibraryUsageDescription": "This app needs access to save event cards to your photo library."
+      }
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "edgeToEdgeEnabled": true
+      "edgeToEdgeEnabled": true,
+      "permissions": ["WRITE_EXTERNAL_STORAGE", "READ_EXTERNAL_STORAGE"]
     },
     "web": {
       "bundler": "metro",
@@ -32,6 +37,20 @@
           "imageWidth": 200,
           "resizeMode": "contain",
           "backgroundColor": "#ffffff"
+        }
+      ],
+      [
+        "expo-media-library",
+        {
+          "photosPermission": "Allow Event Planner to save event cards to your photo library.",
+          "savePhotosPermission": "Allow Event Planner to save event cards to your photo library.",
+          "isAccessMediaLocationEnabled": true
+        }
+      ],
+      [
+        "@react-native-community/datetimepicker",
+        {
+          "mode": "date"
         }
       ]
     ],

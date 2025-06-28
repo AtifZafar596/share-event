@@ -1,110 +1,352 @@
-import { Image } from 'expo-image';
-import { Platform, StyleSheet } from 'react-native';
+import { Ionicons } from "@expo/vector-icons";
+import React from "react";
+import { Dimensions, ScrollView, StyleSheet, Text, View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { moderateScale, scale, verticalScale } from "react-native-size-matters";
 
-import { Collapsible } from '@/components/Collapsible';
-import { ExternalLink } from '@/components/ExternalLink';
-import ParallaxScrollView from '@/components/ParallaxScrollView';
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
-import { IconSymbol } from '@/components/ui/IconSymbol';
+const features = [
+  {
+    id: "1",
+    title: "Create Event Cards",
+    description:
+      "Design beautiful event cards with custom names, categories, and ratings",
+    icon: "create",
+    color: "#4361EE",
+  },
+  {
+    id: "2",
+    title: "Multiple Categories",
+    description:
+      "Choose from Fitness, Running, Party, Workout, Yoga, and Swimming",
+    icon: "grid",
+    color: "#10B981",
+  },
+  {
+    id: "3",
+    title: "Interactive Rating",
+    description: "Rate your events with an interactive 5-star system",
+    icon: "star",
+    color: "#F59E0B",
+  },
+  {
+    id: "4",
+    title: "Social Media Sharing",
+    description:
+      "Share your event cards as images on any social media platform",
+    icon: "share-social",
+    color: "#8B5CF6",
+  },
+  {
+    id: "5",
+    title: "Responsive Design",
+    description: "Optimized for all screen sizes with modern UI/UX",
+    icon: "phone-portrait",
+    color: "#EF4444",
+  },
+  {
+    id: "6",
+    title: "Cross Platform",
+    description: "Works seamlessly on iOS, Android, and Web",
+    icon: "globe",
+    color: "#06B6D4",
+  },
+];
 
-export default function TabTwoScreen() {
+const tips = [
+  "Tap the category buttons to select your event type",
+  "Use the star rating to rate your event from 1-5 stars",
+  'Click "Share Card" to save and share your event card',
+  "Your cards are automatically saved to your device",
+  "Share cards on Instagram, Facebook, Twitter, or any social platform",
+];
+
+export default function ExploreScreen() {
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#D0D0D0', dark: '#353636' }}
-      headerImage={
-        <IconSymbol
-          size={310}
-          color="#808080"
-          name="chevron.left.forwardslash.chevron.right"
-          style={styles.headerImage}
-        />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Explore</ThemedText>
-      </ThemedView>
-      <ThemedText>This app includes example code to help you get started.</ThemedText>
-      <Collapsible title="File-based routing">
-        <ThemedText>
-          This app has two screens:{' '}
-          <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> and{' '}
-          <ThemedText type="defaultSemiBold">app/(tabs)/explore.tsx</ThemedText>
-        </ThemedText>
-        <ThemedText>
-          The layout file in <ThemedText type="defaultSemiBold">app/(tabs)/_layout.tsx</ThemedText>{' '}
-          sets up the tab navigator.
-        </ThemedText>
-        <ExternalLink href="https://docs.expo.dev/router/introduction">
-          <ThemedText type="link">Learn more</ThemedText>
-        </ExternalLink>
-      </Collapsible>
-      <Collapsible title="Android, iOS, and web support">
-        <ThemedText>
-          You can open this project on Android, iOS, and the web. To open the web version, press{' '}
-          <ThemedText type="defaultSemiBold">w</ThemedText> in the terminal running this project.
-        </ThemedText>
-      </Collapsible>
-      <Collapsible title="Images">
-        <ThemedText>
-          For static images, you can use the <ThemedText type="defaultSemiBold">@2x</ThemedText> and{' '}
-          <ThemedText type="defaultSemiBold">@3x</ThemedText> suffixes to provide files for
-          different screen densities
-        </ThemedText>
-        <Image source={require('@/assets/images/react-logo.png')} style={{ alignSelf: 'center' }} />
-        <ExternalLink href="https://reactnative.dev/docs/images">
-          <ThemedText type="link">Learn more</ThemedText>
-        </ExternalLink>
-      </Collapsible>
-      <Collapsible title="Custom fonts">
-        <ThemedText>
-          Open <ThemedText type="defaultSemiBold">app/_layout.tsx</ThemedText> to see how to load{' '}
-          <ThemedText style={{ fontFamily: 'SpaceMono' }}>
-            custom fonts such as this one.
-          </ThemedText>
-        </ThemedText>
-        <ExternalLink href="https://docs.expo.dev/versions/latest/sdk/font">
-          <ThemedText type="link">Learn more</ThemedText>
-        </ExternalLink>
-      </Collapsible>
-      <Collapsible title="Light and dark mode components">
-        <ThemedText>
-          This template has light and dark mode support. The{' '}
-          <ThemedText type="defaultSemiBold">useColorScheme()</ThemedText> hook lets you inspect
-          what the user&apos;s current color scheme is, and so you can adjust UI colors accordingly.
-        </ThemedText>
-        <ExternalLink href="https://docs.expo.dev/develop/user-interface/color-themes/">
-          <ThemedText type="link">Learn more</ThemedText>
-        </ExternalLink>
-      </Collapsible>
-      <Collapsible title="Animations">
-        <ThemedText>
-          This template includes an example of an animated component. The{' '}
-          <ThemedText type="defaultSemiBold">components/HelloWave.tsx</ThemedText> component uses
-          the powerful <ThemedText type="defaultSemiBold">react-native-reanimated</ThemedText>{' '}
-          library to create a waving hand animation.
-        </ThemedText>
-        {Platform.select({
-          ios: (
-            <ThemedText>
-              The <ThemedText type="defaultSemiBold">components/ParallaxScrollView.tsx</ThemedText>{' '}
-              component provides a parallax effect for the header image.
-            </ThemedText>
-          ),
-        })}
-      </Collapsible>
-    </ParallaxScrollView>
+    <SafeAreaView style={styles.container}>
+      <ScrollView showsVerticalScrollIndicator={false}>
+        {/* Header */}
+        <View style={styles.header}>
+          <Ionicons name="bulb" size={moderateScale(32)} color="#4361EE" />
+          <Text style={styles.headerTitle}>Features & Tips</Text>
+          <Text style={styles.headerSubtitle}>
+            Discover what you can do with Event Planner
+          </Text>
+        </View>
+
+        <View style={styles.content}>
+          {/* Features Section */}
+          <View style={styles.section}>
+            <Text style={styles.sectionTitle}>App Features</Text>
+            <View style={styles.featuresGrid}>
+              {features.map((feature) => (
+                <View key={feature.id} style={styles.featureCard}>
+                  <View
+                    style={[
+                      styles.featureIcon,
+                      { backgroundColor: feature.color },
+                    ]}
+                  >
+                    <Ionicons
+                      name={feature.icon as any}
+                      size={moderateScale(24)}
+                      color="#FFF"
+                    />
+                  </View>
+                  <Text style={styles.featureTitle}>{feature.title}</Text>
+                  <Text style={styles.featureDescription}>
+                    {feature.description}
+                  </Text>
+                </View>
+              ))}
+            </View>
+          </View>
+
+          {/* How to Use Section */}
+          <View style={styles.section}>
+            <Text style={styles.sectionTitle}>How to Use</Text>
+            <View style={styles.tipsContainer}>
+              {tips.map((tip, index) => (
+                <View key={index} style={styles.tipItem}>
+                  <View style={styles.tipNumber}>
+                    <Text style={styles.tipNumberText}>{index + 1}</Text>
+                  </View>
+                  <Text style={styles.tipText}>{tip}</Text>
+                </View>
+              ))}
+            </View>
+          </View>
+
+          {/* Social Media Section */}
+          <View style={styles.section}>
+            <Text style={styles.sectionTitle}>Share Your Events</Text>
+            <Text style={styles.socialDescription}>
+              Create beautiful event cards and share them with friends and
+              family on social media platforms. Your cards will be saved as
+              high-quality images that you can post anywhere!
+            </Text>
+
+            <View style={styles.socialPlatforms}>
+              <View style={styles.platformItem}>
+                <Ionicons
+                  name="logo-instagram"
+                  size={moderateScale(32)}
+                  color="#E4405F"
+                />
+                <Text style={styles.platformName}>Instagram</Text>
+              </View>
+              <View style={styles.platformItem}>
+                <Ionicons
+                  name="logo-facebook"
+                  size={moderateScale(32)}
+                  color="#1877F2"
+                />
+                <Text style={styles.platformName}>Facebook</Text>
+              </View>
+              <View style={styles.platformItem}>
+                <Ionicons
+                  name="logo-twitter"
+                  size={moderateScale(32)}
+                  color="#1DA1F2"
+                />
+                <Text style={styles.platformName}>Twitter</Text>
+              </View>
+              <View style={styles.platformItem}>
+                <Ionicons
+                  name="logo-tiktok"
+                  size={moderateScale(32)}
+                  color="#000000"
+                />
+                <Text style={styles.platformName}>TikTok</Text>
+              </View>
+            </View>
+          </View>
+
+          {/* App Info */}
+          <View style={styles.section}>
+            <View style={styles.appInfoCard}>
+              <Ionicons
+                name="information-circle"
+                size={moderateScale(48)}
+                color="#4361EE"
+              />
+              <Text style={styles.appInfoTitle}>Event Planner</Text>
+              <Text style={styles.appInfoVersion}>Version 1.0.0</Text>
+              <Text style={styles.appInfoDescription}>
+                A modern mobile application for creating and sharing beautiful
+                event cards. Built with React Native and Expo for cross-platform
+                compatibility.
+              </Text>
+            </View>
+          </View>
+        </View>
+      </ScrollView>
+    </SafeAreaView>
   );
 }
 
+const { width, height } = Dimensions.get("window");
+
 const styles = StyleSheet.create({
-  headerImage: {
-    color: '#808080',
-    bottom: -90,
-    left: -35,
-    position: 'absolute',
+  container: {
+    flex: 1,
+    backgroundColor: "#F8FAFC",
   },
-  titleContainer: {
-    flexDirection: 'row',
-    gap: 8,
+  header: {
+    alignItems: "center",
+    paddingVertical: verticalScale(20),
+    paddingHorizontal: scale(20),
+  },
+  headerTitle: {
+    fontSize: moderateScale(28),
+    fontWeight: "bold",
+    color: "#4361EE",
+    marginTop: verticalScale(8),
+  },
+  headerSubtitle: {
+    fontSize: moderateScale(16),
+    color: "#6B7280",
+    marginTop: verticalScale(4),
+    textAlign: "center",
+  },
+  content: {
+    paddingHorizontal: scale(20),
+  },
+  section: {
+    marginBottom: verticalScale(30),
+  },
+  sectionTitle: {
+    fontSize: moderateScale(22),
+    fontWeight: "bold",
+    color: "#374151",
+    marginBottom: verticalScale(16),
+  },
+  featuresGrid: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    gap: scale(12),
+  },
+  featureCard: {
+    backgroundColor: "#FFFFFF",
+    borderRadius: moderateScale(12),
+    padding: scale(16),
+    width: (width - scale(52)) / 2,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 3,
+    alignItems: "center",
+  },
+  featureIcon: {
+    width: scale(48),
+    height: scale(48),
+    borderRadius: moderateScale(24),
+    alignItems: "center",
+    justifyContent: "center",
+    marginBottom: verticalScale(12),
+  },
+  featureTitle: {
+    fontSize: moderateScale(14),
+    fontWeight: "bold",
+    color: "#374151",
+    textAlign: "center",
+    marginBottom: verticalScale(4),
+  },
+  featureDescription: {
+    fontSize: moderateScale(12),
+    color: "#6B7280",
+    textAlign: "center",
+    lineHeight: moderateScale(16),
+  },
+  tipsContainer: {
+    backgroundColor: "#FFFFFF",
+    borderRadius: moderateScale(12),
+    padding: scale(20),
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 3,
+  },
+  tipItem: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginBottom: verticalScale(16),
+  },
+  tipNumber: {
+    width: scale(28),
+    height: scale(28),
+    borderRadius: moderateScale(14),
+    backgroundColor: "#4361EE",
+    alignItems: "center",
+    justifyContent: "center",
+    marginRight: scale(12),
+  },
+  tipNumberText: {
+    fontSize: moderateScale(14),
+    fontWeight: "bold",
+    color: "#FFFFFF",
+  },
+  tipText: {
+    fontSize: moderateScale(16),
+    color: "#374151",
+    flex: 1,
+    lineHeight: moderateScale(22),
+  },
+  socialDescription: {
+    fontSize: moderateScale(16),
+    color: "#6B7280",
+    lineHeight: moderateScale(24),
+    marginBottom: verticalScale(20),
+  },
+  socialPlatforms: {
+    flexDirection: "row",
+    justifyContent: "space-around",
+    backgroundColor: "#FFFFFF",
+    borderRadius: moderateScale(12),
+    padding: scale(20),
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 3,
+  },
+  platformItem: {
+    alignItems: "center",
+  },
+  platformName: {
+    fontSize: moderateScale(12),
+    fontWeight: "600",
+    color: "#374151",
+    marginTop: verticalScale(8),
+  },
+  appInfoCard: {
+    backgroundColor: "#FFFFFF",
+    borderRadius: moderateScale(16),
+    padding: scale(24),
+    alignItems: "center",
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 8,
+    elevation: 4,
+  },
+  appInfoTitle: {
+    fontSize: moderateScale(24),
+    fontWeight: "bold",
+    color: "#374151",
+    marginTop: verticalScale(12),
+  },
+  appInfoVersion: {
+    fontSize: moderateScale(14),
+    color: "#6B7280",
+    marginTop: verticalScale(4),
+  },
+  appInfoDescription: {
+    fontSize: moderateScale(16),
+    color: "#6B7280",
+    textAlign: "center",
+    lineHeight: moderateScale(24),
+    marginTop: verticalScale(16),
   },
 });
