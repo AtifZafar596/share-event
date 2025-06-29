@@ -7,9 +7,9 @@ import { moderateScale, scale, verticalScale } from "react-native-size-matters";
 const features = [
   {
     id: "1",
-    title: "Create Event Cards",
+    title: "Create Activity Cards",
     description:
-      "Design beautiful event cards with custom names, categories, and ratings",
+      "Design beautiful activity cards with custom names, categories, and ratings",
     icon: "create",
     color: "#4361EE",
   },
@@ -24,7 +24,7 @@ const features = [
   {
     id: "3",
     title: "Interactive Rating",
-    description: "Rate your events with an interactive 5-star system",
+    description: "Rate your activities with an interactive 5-star system",
     icon: "star",
     color: "#F59E0B",
   },
@@ -32,7 +32,7 @@ const features = [
     id: "4",
     title: "Social Media Sharing",
     description:
-      "Share your event cards as images on any social media platform",
+      "Share your activity cards as images on any social media platform",
     icon: "share-social",
     color: "#8B5CF6",
   },
@@ -53,9 +53,9 @@ const features = [
 ];
 
 const tips = [
-  "Tap the category buttons to select your event type",
-  "Use the star rating to rate your event from 1-5 stars",
-  'Click "Share Card" to save and share your event card',
+  "Tap the category buttons to select your activity type",
+  "Use the star rating to rate your activity from 1-5 stars",
+  'Click "Share Card" to save and share your activity card',
   "Your cards are automatically saved to your device",
   "Share cards on Instagram, Facebook, Twitter, or any social platform",
 ];
@@ -69,7 +69,7 @@ export default function ExploreScreen() {
           <Ionicons name="bulb" size={moderateScale(32)} color="#4361EE" />
           <Text style={styles.headerTitle}>Features & Tips</Text>
           <Text style={styles.headerSubtitle}>
-            Discover what you can do with Event Planner
+            Discover what you can do with Activity Post
           </Text>
         </View>
 
@@ -118,9 +118,9 @@ export default function ExploreScreen() {
 
           {/* Social Media Section */}
           <View style={styles.section}>
-            <Text style={styles.sectionTitle}>Share Your Events</Text>
+            <Text style={styles.sectionTitle}>Share Your Activities</Text>
             <Text style={styles.socialDescription}>
-              Create beautiful event cards and share them with friends and
+              Create beautiful activity cards and share them with friends and
               family on social media platforms. Your cards will be saved as
               high-quality images that you can post anywhere!
             </Text>
@@ -169,11 +169,11 @@ export default function ExploreScreen() {
                 size={moderateScale(48)}
                 color="#4361EE"
               />
-              <Text style={styles.appInfoTitle}>Event Planner</Text>
+              <Text style={styles.appInfoTitle}>Activity Post</Text>
               <Text style={styles.appInfoVersion}>Version 1.0.0</Text>
               <Text style={styles.appInfoDescription}>
                 A modern mobile application for creating and sharing beautiful
-                event cards. Built with React Native and Expo for cross-platform
+                activity cards. Built with React Native and Expo for cross-platform
                 compatibility.
               </Text>
             </View>

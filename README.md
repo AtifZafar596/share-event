@@ -1,18 +1,18 @@
-# Event Planner - React Native App
+# Instant share - React Native App
 
-A modern, cross-platform mobile application for creating and sharing beautiful event cards. Built with React Native, Expo, and TypeScript.
+A modern, cross-platform mobile application for creating and sharing beautiful activity cards. Built with React Native, Expo, and TypeScript.
 
 ## 🚀 Features
 
-- **Event Creation**: Create custom event cards with names, categories, and ratings
-- **Custom Date Selection**: Choose specific dates for your events with an intuitive date picker
+- **Event Creation**: Create custom activity cards with names, categories, and ratings
+- **Custom Date Selection**: Choose specific dates for your activities with an intuitive date picker
 - **Multiple Categories**: Choose from Fitness, Running, Party, Workout, Yoga, and Swimming
 - **Interactive Rating System**: 5-star rating with visual feedback
-- **Social Media Sharing**: Share event cards as high-quality images on any platform
+- **Social Media Sharing**: Share activity cards as high-quality images on any platform
 - **Responsive Design**: Optimized for all screen sizes using react-native-size-matters
 - **Cross Platform**: Works seamlessly on iOS, Android, and Web
 - **Modern UI/UX**: Clean, intuitive interface with smooth animations and beautiful gradients
-- **Enhanced Card Design**: Professional event cards with category-specific colors and decorative elements
+- **Enhanced Card Design**: Professional activity cards with category-specific colors and decorative elements
 
 ## 📱 Screenshots
 
@@ -39,7 +39,7 @@ The app features two main screens:
 
    ```bash
    git clone <repository-url>
-   cd share-event
+   cd share-activity
    ```
 
 2. **Install dependencies**
@@ -83,7 +83,7 @@ npx eas build --platform android --profile preview
 
 The app requires the following permissions:
 
-- **Media Library Access**: To save event cards to the device's photo library
+- **Media Library Access**: To save activity cards to the device's photo library
 - **Storage Permissions** (Android): To read/write images
 
 These permissions are automatically requested when needed.
@@ -102,16 +102,16 @@ Make sure you have the following installed:
 
 ### Creating an Event Card
 
-1. **Enter Event Name**: Type a descriptive name for your event
+1. **Enter Event Name**: Type a descriptive name for your activity
 2. **Select Category**: Choose from available categories (Fitness, Running, Party, etc.)
-3. **Choose Date**: Tap the date field to open the date picker and select your event date
-4. **Set Rating**: Tap the stars to rate your event (1-5 stars)
+3. **Choose Date**: Tap the date field to open the date picker and select your activity date
+4. **Set Rating**: Tap the stars to rate your activity (1-5 stars)
 5. **Create Card**: Tap "Create Event Card" to generate the card
 
 ### Sharing Event Cards
 
 1. **View Created Cards**: All created cards appear in the "Your Events" section
-2. **Share Card**: Tap "Share Card" on any event card
+2. **Share Card**: Tap "Share Card" on any activity card
 3. **Automatic Processing**: The app will:
 - Capture the card as a high-quality image
 - Save it to your device's photo library
@@ -131,7 +131,7 @@ The app uses a consistent design system with:
 
 ### Enhanced Card Design
 
-- **Category-Specific Colors**: Each event category has its own gradient color scheme
+- **Category-Specific Colors**: Each activity category has its own gradient color scheme
 - **Decorative Elements**: Subtle decorative circles and lines for visual appeal
 - **Professional Typography**: Clean, readable fonts with proper hierarchy
 - **Enhanced Layout**: Better spacing and visual organization
@@ -159,7 +159,7 @@ The app uses React's built-in state management:
 card-share/
 ├── app/
 │ ├── (tabs)/
-│ │ ├── index.tsx # Main event creation screen
+│ │ ├── index.tsx # Main activity creation screen
 │ │ ├── explore.tsx # Features and tips screen
 │ │ └── \_layout.tsx # Tab navigation layout
 │ └── \_layout.tsx # Root layout

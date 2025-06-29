@@ -5,6 +5,7 @@ import React, { useState } from "react";
 import {
   Alert,
   Dimensions,
+  Image,
   ScrollView,
   StyleSheet,
   Text,
@@ -26,8 +27,8 @@ interface Event {
 }
 
 export default function HomeScreen() {
-  const [events, setEvents] = useState<Event[]>([]);
-  const [eventName, setEventName] = useState("");
+  const [activities, setEvents] = useState<Event[]>([]);
+  const [activityName, setEventName] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
   const [selectedRating, setSelectedRating] = useState(0);
   const [customDate, setCustomDate] = useState(new Date());
@@ -84,7 +85,7 @@ export default function HomeScreen() {
     setSelectedRating(rating);
   };
 
-  const handleDateChange = (event: any, selectedDate?: Date) => {
+  const handleDateChange = (activity: any, selectedDate?: Date) => {
     setShowDatePicker(false);
     if (selectedDate) {
       setCustomDate(selectedDate);
@@ -105,8 +106,8 @@ export default function HomeScreen() {
   };
 
   const handleCreateEvent = () => {
-    if (!eventName.trim()) {
-      Alert.alert("Error", "Please enter an event name");
+    if (!activityName.trim()) {
+      Alert.alert("Error", "Please enter an activity name");
       return;
     }
     if (!selectedCategory) {
@@ -120,14 +121,14 @@ export default function HomeScreen() {
 
     const newEvent: Event = {
       id: Date.now().toString(),
-      name: eventName.trim(),
+      name: activityName.trim(),
       category: selectedCategory,
       rating: selectedRating,
       date: formatDate(customDate),
       customDate: customDate,
     };
 
-    setEvents([newEvent, ...events]);
+    setEvents([newEvent, ...activities]);
     setEventName("");
     setSelectedCategory("");
     setSelectedRating(0);
@@ -175,36 +176,36 @@ export default function HomeScreen() {
     );
   };
 
-  const handleShareEvent = async (event: Event) => {
-    setSelectedEventForSharing(event);
+  const handleShareEvent = async (activity: Event) => {
+    setSelectedEventForSharing(activity);
     // Small delay to ensure state is updated before capture
     setTimeout(() => {
-      captureAndShare(event, () => {
+      captureAndShare(activity, () => {
         setSelectedEventForSharing(null);
       });
     }, 100);
   };
 
-  const renderEventCard = (event: Event) => {
-    const gradient = getCategoryGradient(event.category);
+  const renderEventCard = (activity: Event) => {
+    const gradient = getCategoryGradient(activity.category);
 
     return (
-      <View key={event.id} style={styles.eventCard}>
+      <View key={activity.id} style={styles.activityCard}>
         <View style={[styles.cardHeader, { backgroundColor: gradient[0] }]}>
           <View style={styles.cardHeaderContent}>
             <View style={styles.categoryBadge}>
               <Ionicons
-                name={getCategoryIcon(event.category) as any}
+                name={getCategoryIcon(activity.category) as any}
                 size={moderateScale(16)}
                 color="#FFF"
               />
               <Text style={styles.categoryText}>
-                {getCategoryName(event.category)}
+                {getCategoryName(activity.category)}
               </Text>
             </View>
             <View style={styles.cardTitleContainer}>
-              <Text style={styles.cardTitle}>{event.name}</Text>
-              <Text style={styles.cardDate}>{event.date}</Text>
+              <Text style={styles.cardTitle}>{activity.name}</Text>
+              <Text style={styles.cardDate}>{activity.date}</Text>
             </View>
             <View style={styles.cardDecoration}>
               <View style={styles.decorationCircle} />
@@ -214,18 +215,18 @@ export default function HomeScreen() {
         </View>
         <View style={styles.cardBody}>
           <View style={styles.ratingContainer}>
-            {renderStars(event.rating)}
-            <Text style={styles.ratingText}>{event.rating}.0</Text>
+            {renderStars(activity.rating)}
+            <Text style={styles.ratingText}>{activity.rating}.0</Text>
           </View>
           <View style={styles.cardFooter}>
-            <View style={styles.eventDetails}>
+            <View style={styles.activityDetails}>
               <View style={styles.detailItem}>
                 <Ionicons
                   name="calendar"
                   size={moderateScale(16)}
                   color="#6B7280"
                 />
-                <Text style={styles.detailText}>Event Date</Text>
+                <Text style={styles.detailText}>Activity Date</Text>
               </View>
               <View style={styles.detailItem}>
                 <Ionicons
@@ -238,7 +239,7 @@ export default function HomeScreen() {
             </View>
             <TouchableOpacity
               style={[styles.shareButton, { backgroundColor: gradient[1] }]}
-              onPress={() => handleShareEvent(event)}
+              onPress={() => handleShareEvent(activity)}
               disabled={isCreating}
             >
               <Ionicons
@@ -247,7 +248,7 @@ export default function HomeScreen() {
                 color="#FFF"
               />
               <Text style={styles.shareButtonText}>
-                {isCreating && selectedEventForSharing?.id === event.id
+                {isCreating && selectedEventForSharing?.id === activity.id
                   ? "Creating..."
                   : "Share Card"}
               </Text>
@@ -264,30 +265,35 @@ export default function HomeScreen() {
         {/* Header */}
         <View style={styles.header}>
           <View style={styles.headerIconContainer}>
-            <Ionicons
-              name="calendar"
-              size={moderateScale(32)}
-              color="#4361EE"
+            <Image
+              source={require("../../assets/images/logo.png")}
+              style={{
+                width: moderateScale(64),
+                height: moderateScale(64),
+                resizeMode: "contain",
+                borderRadius: moderateScale(32),
+                backgroundColor: "#fff",
+              }}
             />
           </View>
-          <Text style={styles.headerTitle}>Event Planner</Text>
+          <Text style={styles.headerTitle}>Activity Post</Text>
           <Text style={styles.headerSubtitle}>
-            Create & share beautiful event cards
+            Create & share beautiful activity cards
           </Text>
         </View>
 
         <View style={styles.content}>
           {/* Control Panel */}
           <View style={styles.controlPanel}>
-            <Text style={styles.panelTitle}>Create Event</Text>
+            <Text style={styles.panelTitle}>Create Activity</Text>
 
             <View style={styles.formGroup}>
               <Text style={styles.label}>Activity Name</Text>
               <TextInput
                 style={styles.input}
-                value={eventName}
+                value={activityName}
                 onChangeText={setEventName}
-                placeholder="Enter event name"
+                placeholder="Enter activity name"
                 placeholderTextColor="#9CA3AF"
               />
             </View>
@@ -327,7 +333,7 @@ export default function HomeScreen() {
             </View>
 
             <View style={styles.formGroup}>
-              <Text style={styles.label}>Event Date</Text>
+              <Text style={styles.label}>Activity Date</Text>
               <TouchableOpacity
                 style={styles.dateButton}
                 onPress={showDatePickerModal}
@@ -362,36 +368,38 @@ export default function HomeScreen() {
                 size={moderateScale(24)}
                 color="#FFF"
               />
-              <Text style={styles.createButtonText}>Create Event Card</Text>
+              <Text style={styles.createButtonText}>Create Activity Card</Text>
             </TouchableOpacity>
           </View>
 
           {/* Events Section */}
-          <View style={styles.eventsSection}>
-            <View style={styles.eventsHeader}>
-              <Text style={styles.eventsTitle}>Your Events</Text>
-              <View style={styles.eventsCount}>
-                <Text style={styles.eventsCountText}>
-                  {events.length} events
+          <View style={styles.activitiesSection}>
+            <View style={styles.activitiesHeader}>
+              <Text style={styles.activitiesTitle}>Your Activities</Text>
+              <View style={styles.activitiesCount}>
+                <Text style={styles.activitiesCountText}>
+                  {activities.length} activities
                 </Text>
               </View>
             </View>
 
-            {events.length === 0 ? (
+            {activities.length === 0 ? (
               <View style={styles.noEvents}>
                 <Ionicons
                   name="calendar-outline"
                   size={moderateScale(64)}
                   color="#E5E7EB"
                 />
-                <Text style={styles.noEventsTitle}>No events created yet</Text>
+                <Text style={styles.noEventsTitle}>
+                  No activities created yet
+                </Text>
                 <Text style={styles.noEventsSubtitle}>
-                  Create your first event using the panel above
+                  Create your first activity using the panel above
                 </Text>
               </View>
             ) : (
-              <View style={styles.eventsContainer}>
-                {events.map(renderEventCard)}
+              <View style={styles.activitiesContainer}>
+                {activities.map(renderEventCard)}
               </View>
             )}
           </View>
@@ -416,8 +424,6 @@ export default function HomeScreen() {
         options={{
           format: "png",
           quality: 0.9,
-          width: scale(350),
-          height: verticalScale(450),
         }}
       >
         {selectedEventForSharing && (
@@ -466,13 +472,17 @@ export default function HomeScreen() {
               </View>
               <View style={styles.captureFooter}>
                 <Text style={styles.captureFooterText}>
-                  Created with Event Planner
+                  Created with Instant share
                 </Text>
                 <View style={styles.captureLogo}>
-                  <Ionicons
-                    name="calendar"
-                    size={moderateScale(16)}
-                    color="#4361EE"
+                  <Image
+                    source={require("../../assets/images/logo.png")}
+                    style={{
+                      width: moderateScale(20),
+                      height: moderateScale(20),
+                      borderRadius: moderateScale(10),
+                      resizeMode: "cover",
+                    }}
                   />
                 </View>
               </View>
@@ -622,7 +632,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     color: "#FFFFFF",
   },
-  eventsSection: {
+  activitiesSection: {
     backgroundColor: "#FFFFFF",
     borderRadius: moderateScale(16),
     padding: scale(20),
@@ -633,24 +643,24 @@ const styles = StyleSheet.create({
     shadowRadius: 8,
     elevation: 4,
   },
-  eventsHeader: {
+  activitiesHeader: {
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
     marginBottom: verticalScale(20),
   },
-  eventsTitle: {
+  activitiesTitle: {
     fontSize: moderateScale(20),
     fontWeight: "bold",
     color: "#4361EE",
   },
-  eventsCount: {
+  activitiesCount: {
     backgroundColor: "#EDF2FF",
     paddingHorizontal: scale(12),
     paddingVertical: verticalScale(4),
     borderRadius: moderateScale(20),
   },
-  eventsCountText: {
+  activitiesCountText: {
     fontSize: moderateScale(14),
     fontWeight: "600",
     color: "#4361EE",
@@ -671,10 +681,10 @@ const styles = StyleSheet.create({
     marginTop: verticalScale(8),
     textAlign: "center",
   },
-  eventsContainer: {
+  activitiesContainer: {
     gap: verticalScale(16),
   },
-  eventCard: {
+  activityCard: {
     backgroundColor: "#FFFFFF",
     borderRadius: moderateScale(16),
     overflow: "hidden",
@@ -757,7 +767,7 @@ const styles = StyleSheet.create({
   cardFooter: {
     gap: verticalScale(12),
   },
-  eventDetails: {
+  activityDetails: {
     flexDirection: "row",
     justifyContent: "space-between",
     marginBottom: verticalScale(8),
@@ -790,8 +800,8 @@ const styles = StyleSheet.create({
     top: -1000,
   },
   captureCard: {
-    width: scale(350),
-    height: verticalScale(450),
+    width: scale(400),
+    height: scale(400),
     backgroundColor: "#FFFFFF",
     borderRadius: moderateScale(16),
     overflow: "hidden",

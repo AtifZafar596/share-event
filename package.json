@@ -1,5 +1,5 @@
 {
-  "name": "card-share",
+  "name": "instant-share",
   "main": "expo-router/entry",
   "version": "1.0.0",
   "scripts": {

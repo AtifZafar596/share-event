@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "Event Planner",
+    "name": "Instant share",
     "slug": "event-planner",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -11,8 +11,8 @@
     "ios": {
       "supportsTablet": true,
       "infoPlist": {
-        "NSPhotoLibraryAddUsageDescription": "This app needs access to save event cards to your photo library.",
-        "NSPhotoLibraryUsageDescription": "This app needs access to save event cards to your photo library."
+        "NSPhotoLibraryAddUsageDescription": "This app needs access to save activity cards to your photo library.",
+        "NSPhotoLibraryUsageDescription": "This app needs access to save activity cards to your photo library."
       }
     },
     "android": {
@@ -21,7 +21,14 @@
         "backgroundColor": "#ffffff"
       },
       "edgeToEdgeEnabled": true,
-      "permissions": ["WRITE_EXTERNAL_STORAGE", "READ_EXTERNAL_STORAGE"]
+      "permissions": [
+        "WRITE_EXTERNAL_STORAGE",
+        "READ_EXTERNAL_STORAGE",
+        "android.permission.READ_EXTERNAL_STORAGE",
+        "android.permission.WRITE_EXTERNAL_STORAGE",
+        "android.permission.ACCESS_MEDIA_LOCATION"
+      ],
+      "package": "com.atifdev.eventplanner"
     },
     "web": {
       "bundler": "metro",
@@ -34,16 +41,15 @@
         "expo-splash-screen",
         {
           "image": "./assets/images/splash-icon.png",
-          "imageWidth": 200,
-          "resizeMode": "contain",
-          "backgroundColor": "#ffffff"
+          "resizeMode": "cover",
+          "backgroundColor": "#4361EE"
         }
       ],
       [
         "expo-media-library",
         {
-          "photosPermission": "Allow Event Planner to save event cards to your photo library.",
-          "savePhotosPermission": "Allow Event Planner to save event cards to your photo library.",
+          "photosPermission": "Allow Instant share to save activity cards to your photo library.",
+          "savePhotosPermission": "Allow Instant share to save activity cards to your photo library.",
           "isAccessMediaLocationEnabled": true
         }
       ],
@@ -56,6 +62,12 @@
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "83509342-8176-43d2-962a-d81eec87d46b"
+      }
     }
   }
 }
