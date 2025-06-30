@@ -1,0 +1,1196 @@
+{
+  "categories": [
+    {
+      "id": "sports",
+      "name": "Sports",
+      "label": "Sports",
+      "translations": {
+        "en": "Sports",
+        "pt": "Esportes"
+      }
+    },
+    {
+      "id": "fitness",
+      "name": "Fitness",
+      "label": "Fitness",
+      "translations": {
+        "en": "Fitness",
+        "pt": "Fitness"
+      }
+    },
+    {
+      "id": "water-sports",
+      "name": "Water Sports",
+      "label": "Water Sports",
+      "translations": {
+        "en": "Water Sports",
+        "pt": "Esportes Aquáticos"
+      }
+    },
+    {
+      "id": "martial-arts",
+      "name": "Martial Arts",
+      "label": "Martial Arts",
+      "translations": {
+        "en": "Martial Arts",
+        "pt": "Artes Marciais"
+      }
+    },
+    {
+      "id": "dance",
+      "name": "Dance",
+      "label": "Dance",
+      "translations": {
+        "en": "Dance",
+        "pt": "Dança"
+      }
+    },
+    {
+      "id": "extreme-sports",
+      "name": "Extreme Sports",
+      "label": "Extreme Sports",
+      "translations": {
+        "en": "Extreme Sports",
+        "pt": "Esportes Radicais"
+      }
+    },
+    {
+      "id": "indoor-games",
+      "name": "Indoor Games",
+      "label": "Indoor Games",
+      "translations": {
+        "en": "Indoor Games",
+        "pt": "Jogos de Interior"
+      }
+    },
+    {
+      "id": "intimacy",
+      "name": "Intimacy",
+      "label": "Intimacy",
+      "translations": {
+        "en": "Intimacy",
+        "pt": "Intimidade"
+      }
+    },
+    {
+      "id": "emotional",
+      "name": "Emotional",
+      "label": "Emotional",
+      "translations": {
+        "en": "Emotional",
+        "pt": "Emocional"
+      }
+    },
+    {
+      "id": "other",
+      "name": "Other",
+      "label": "Other",
+      "translations": {
+        "en": "Other",
+        "pt": "Outros"
+      }
+    }
+  ],
+  "activities": [
+    {
+      "id": 1,
+      "name": "Gym",
+      "icon": "🏋️",
+      "category": "Fitness",
+      "color": "#3B82F6",
+      "translations": {
+        "en": "Gym",
+        "pt": "Academia"
+      }
+    },
+    {
+      "id": 2,
+      "name": "Running",
+      "icon": "🏃",
+      "category": "Fitness",
+      "color": "#EF4444",
+      "translations": {
+        "en": "Running",
+        "pt": "Corrida"
+      }
+    },
+    {
+      "id": 3,
+      "name": "Jogging",
+      "icon": "🏃‍♀️",
+      "category": "Fitness",
+      "color": "#10B981",
+      "translations": {
+        "en": "Jogging",
+        "pt": "Corrida Leve"
+      }
+    },
+    {
+      "id": 4,
+      "name": "Football",
+      "icon": "⚽",
+      "category": "Sports",
+      "color": "#F59E0B",
+      "translations": {
+        "en": "Football",
+        "pt": "Futebol"
+      }
+    },
+    {
+      "id": 5,
+      "name": "Basketball",
+      "icon": "🏀",
+      "category": "Sports",
+      "color": "#F97316",
+      "translations": {
+        "en": "Basketball",
+        "pt": "Basquete"
+      }
+    },
+    {
+      "id": 6,
+      "name": "Swimming",
+      "icon": "🏊",
+      "category": "Water Sports",
+      "color": "#06B6D4",
+      "translations": {
+        "en": "Swimming",
+        "pt": "Natação"
+      }
+    },
+    {
+      "id": 7,
+      "name": "Yoga",
+      "icon": "🧘",
+      "category": "Fitness",
+      "color": "#A855F7",
+      "translations": {
+        "en": "Yoga",
+        "pt": "Yoga"
+      }
+    },
+    {
+      "id": 8,
+      "name": "Cycling",
+      "icon": "🚴",
+      "category": "Fitness",
+      "color": "#8B5CF6",
+      "translations": {
+        "en": "Cycling",
+        "pt": "Ciclismo"
+      }
+    },
+    {
+      "id": 9,
+      "name": "Boxing",
+      "icon": "🥊",
+      "category": "Martial Arts",
+      "color": "#B91C1C",
+      "translations": {
+        "en": "Boxing",
+        "pt": "Boxe"
+      }
+    },
+    {
+      "id": 10,
+      "name": "Tennis",
+      "icon": "🎾",
+      "category": "Sports",
+      "color": "#16A34A",
+      "translations": {
+        "en": "Tennis",
+        "pt": "Tênis"
+      }
+    },
+    {
+      "id": 11,
+      "name": "Cuddling",
+      "icon": "🤗",
+      "category": "Intimacy",
+      "color": "#EC4899",
+      "translations": {
+        "en": "Cuddling",
+        "pt": "Carícias"
+      }
+    },
+    {
+      "id": 12,
+      "name": "Kissing",
+      "icon": "💋",
+      "category": "Intimacy",
+      "color": "#F43F5E",
+      "translations": {
+        "en": "Kissing",
+        "pt": "Beijo"
+      }
+    },
+    {
+      "id": 13,
+      "name": "Holding Hands",
+      "icon": "🤝",
+      "category": "Intimacy",
+      "color": "#E11D48",
+      "translations": {
+        "en": "Holding Hands",
+        "pt": "Segurar Mãos"
+      }
+    },
+    {
+      "id": 14,
+      "name": "Massage",
+      "icon": "💆",
+      "category": "Intimacy",
+      "color": "#BE185D",
+      "translations": {
+        "en": "Massage",
+        "pt": "Massagem"
+      }
+    },
+    {
+      "id": 15,
+      "name": "Romantic Dinner",
+      "icon": "🍽️",
+      "category": "Intimacy",
+      "color": "#9F1239",
+      "translations": {
+        "en": "Romantic Dinner",
+        "pt": "Jantar Romântico"
+      }
+    },
+    {
+      "id": 16,
+      "name": "Slow Dance",
+      "icon": "💃",
+      "category": "Intimacy",
+      "color": "#DC2626",
+      "translations": {
+        "en": "Slow Dance",
+        "pt": "Dança Lenta"
+      }
+    },
+    {
+      "id": 17,
+      "name": "Love Letters",
+      "icon": "💌",
+      "category": "Intimacy",
+      "color": "#DB2777",
+      "translations": {
+        "en": "Love Letters",
+        "pt": "Cartas de Amor"
+      }
+    },
+    {
+      "id": 18,
+      "name": "Pillow Talk",
+      "icon": "🛏️",
+      "category": "Intimacy",
+      "color": "#C2185B",
+      "translations": {
+        "en": "Pillow Talk",
+        "pt": "Conversa Íntima"
+      }
+    },
+    {
+      "id": 19,
+      "name": "Bubble Bath",
+      "icon": "🛁",
+      "category": "Intimacy",
+      "color": "#AD1457",
+      "translations": {
+        "en": "Bubble Bath",
+        "pt": "Banho de Espuma"
+      }
+    },
+    {
+      "id": 20,
+      "name": "Sunset Together",
+      "icon": "🌅",
+      "category": "Intimacy",
+      "color": "#880E4F",
+      "translations": {
+        "en": "Sunset Together",
+        "pt": "Pôr do Sol Juntos"
+      }
+    },
+    {
+      "id": 21,
+      "name": "Deep Talk",
+      "icon": "💬",
+      "category": "Emotional",
+      "color": "#6366F1",
+      "translations": {
+        "en": "Deep Talk",
+        "pt": "Conversa Profunda"
+      }
+    },
+    {
+      "id": 22,
+      "name": "Laughing Together",
+      "icon": "😄",
+      "category": "Emotional",
+      "color": "#F59E0B",
+      "translations": {
+        "en": "Laughing Together",
+        "pt": "Rindo Juntos"
+      }
+    },
+    {
+      "id": 23,
+      "name": "Crying Together",
+      "icon": "😢",
+      "category": "Emotional",
+      "color": "#8B5CF6",
+      "translations": {
+        "en": "Crying Together",
+        "pt": "Chorando Juntos"
+      }
+    },
+    {
+      "id": 24,
+      "name": "Sharing Secrets",
+      "icon": "🤫",
+      "category": "Emotional",
+      "color": "#EC4899",
+      "translations": {
+        "en": "Sharing Secrets",
+        "pt": "Compartilhando Segredos"
+      }
+    },
+    {
+      "id": 25,
+      "name": "Supporting Each Other",
+      "icon": "🤝",
+      "category": "Emotional",
+      "color": "#10B981",
+      "translations": {
+        "en": "Supporting Each Other",
+        "pt": "Apoiando um ao Outro"
+      }
+    },
+    {
+      "id": 26,
+      "name": "Celebrating Success",
+      "icon": "🎉",
+      "category": "Emotional",
+      "color": "#F97316",
+      "translations": {
+        "en": "Celebrating Success",
+        "pt": "Celebrando Sucesso"
+      }
+    },
+    {
+      "id": 27,
+      "name": "Comforting",
+      "icon": "🤗",
+      "category": "Emotional",
+      "color": "#06B6D4",
+      "translations": {
+        "en": "Comforting",
+        "pt": "Confortando"
+      }
+    },
+    {
+      "id": 28,
+      "name": "Listening",
+      "icon": "👂",
+      "category": "Emotional",
+      "color": "#A855F7",
+      "translations": {
+        "en": "Listening",
+        "pt": "Ouvindo"
+      }
+    },
+    {
+      "id": 29,
+      "name": "Understanding",
+      "icon": "🧠",
+      "category": "Emotional",
+      "color": "#3B82F6",
+      "translations": {
+        "en": "Understanding",
+        "pt": "Compreendendo"
+      }
+    },
+    {
+      "id": 30,
+      "name": "Forgiving",
+      "icon": "💝",
+      "category": "Emotional",
+      "color": "#EF4444",
+      "translations": {
+        "en": "Forgiving",
+        "pt": "Perdoando"
+      }
+    },
+    {
+      "id": 31,
+      "name": "Volleyball",
+      "icon": "🏐",
+      "category": "Sports",
+      "color": "#16A34A",
+      "translations": {
+        "en": "Volleyball",
+        "pt": "Vôlei"
+      }
+    },
+    {
+      "id": 32,
+      "name": "Baseball",
+      "icon": "⚾",
+      "category": "Sports",
+      "color": "#F59E0B",
+      "translations": {
+        "en": "Baseball",
+        "pt": "Beisebol"
+      }
+    },
+    {
+      "id": 33,
+      "name": "Golf",
+      "icon": "⛳",
+      "category": "Sports",
+      "color": "#10B981",
+      "translations": {
+        "en": "Golf",
+        "pt": "Golfe"
+      }
+    },
+    {
+      "id": 34,
+      "name": "Hockey",
+      "icon": "🏒",
+      "category": "Sports",
+      "color": "#6366F1",
+      "translations": {
+        "en": "Hockey",
+        "pt": "Hóquei"
+      }
+    },
+    {
+      "id": 35,
+      "name": "Rugby",
+      "icon": "🏉",
+      "category": "Sports",
+      "color": "#B91C1C",
+      "translations": {
+        "en": "Rugby",
+        "pt": "Rugby"
+      }
+    },
+    {
+      "id": 36,
+      "name": "Cricket",
+      "icon": "🏏",
+      "category": "Sports",
+      "color": "#F97316",
+      "translations": {
+        "en": "Cricket",
+        "pt": "Críquete"
+      }
+    },
+    {
+      "id": 37,
+      "name": "Table Tennis",
+      "icon": "🏓",
+      "category": "Sports",
+      "color": "#8B5CF6",
+      "translations": {
+        "en": "Table Tennis",
+        "pt": "Tênis de Mesa"
+      }
+    },
+    {
+      "id": 38,
+      "name": "Badminton",
+      "icon": "🏸",
+      "category": "Sports",
+      "color": "#06B6D4",
+      "translations": {
+        "en": "Badminton",
+        "pt": "Badminton"
+      }
+    },
+    {
+      "id": 39,
+      "name": "Squash",
+      "icon": "🎾",
+      "category": "Sports",
+      "color": "#A855F7",
+      "translations": {
+        "en": "Squash",
+        "pt": "Squash"
+      }
+    },
+    {
+      "id": 40,
+      "name": "Weightlifting",
+      "icon": "🏋️‍♂️",
+      "category": "Fitness",
+      "color": "#3B82F6",
+      "translations": {
+        "en": "Weightlifting",
+        "pt": "Levantamento de Peso"
+      }
+    },
+    {
+      "id": 41,
+      "name": "CrossFit",
+      "icon": "💪",
+      "category": "Fitness",
+      "color": "#EF4444",
+      "translations": {
+        "en": "CrossFit",
+        "pt": "CrossFit"
+      }
+    },
+    {
+      "id": 42,
+      "name": "Pilates",
+      "icon": "🧘‍♀️",
+      "category": "Fitness",
+      "color": "#10B981",
+      "translations": {
+        "en": "Pilates",
+        "pt": "Pilates"
+      }
+    },
+    {
+      "id": 43,
+      "name": "Zumba",
+      "icon": "💃",
+      "category": "Fitness",
+      "color": "#F59E0B",
+      "translations": {
+        "en": "Zumba",
+        "pt": "Zumba"
+      }
+    },
+    {
+      "id": 44,
+      "name": "Spinning",
+      "icon": "🚴‍♀️",
+      "category": "Fitness",
+      "color": "#8B5CF6",
+      "translations": {
+        "en": "Spinning",
+        "pt": "Spinning"
+      }
+    },
+    {
+      "id": 45,
+      "name": "HIIT",
+      "icon": "⚡",
+      "category": "Fitness",
+      "color": "#F97316",
+      "translations": {
+        "en": "HIIT",
+        "pt": "HIIT"
+      }
+    },
+    {
+      "id": 46,
+      "name": "Swimming",
+      "icon": "🏊‍♂️",
+      "category": "Water Sports",
+      "color": "#06B6D4",
+      "translations": {
+        "en": "Swimming",
+        "pt": "Natação"
+      }
+    },
+    {
+      "id": 47,
+      "name": "Diving",
+      "icon": "🤿",
+      "category": "Water Sports",
+      "color": "#3B82F6",
+      "translations": {
+        "en": "Diving",
+        "pt": "Mergulho"
+      }
+    },
+    {
+      "id": 48,
+      "name": "Surfing",
+      "icon": "🏄",
+      "category": "Water Sports",
+      "color": "#10B981",
+      "translations": {
+        "en": "Surfing",
+        "pt": "Surfe"
+      }
+    },
+    {
+      "id": 49,
+      "name": "Water Polo",
+      "icon": "🤽",
+      "category": "Water Sports",
+      "color": "#F59E0B",
+      "translations": {
+        "en": "Water Polo",
+        "pt": "Polo Aquático"
+      }
+    },
+    {
+      "id": 50,
+      "name": "Rowing",
+      "icon": "🚣",
+      "category": "Water Sports",
+      "color": "#8B5CF6",
+      "translations": {
+        "en": "Rowing",
+        "pt": "Remo"
+      }
+    },
+    {
+      "id": 51,
+      "name": "Karate",
+      "icon": "🥋",
+      "category": "Martial Arts",
+      "color": "#B91C1C",
+      "translations": {
+        "en": "Karate",
+        "pt": "Caratê"
+      }
+    },
+    {
+      "id": 52,
+      "name": "Judo",
+      "icon": "🥋",
+      "category": "Martial Arts",
+      "color": "#6366F1",
+      "translations": {
+        "en": "Judo",
+        "pt": "Judô"
+      }
+    },
+    {
+      "id": 53,
+      "name": "Taekwondo",
+      "icon": "🥋",
+      "category": "Martial Arts",
+      "color": "#F97316",
+      "translations": {
+        "en": "Taekwondo",
+        "pt": "Taekwondo"
+      }
+    },
+    {
+      "id": 54,
+      "name": "Kung Fu",
+      "icon": "🥋",
+      "category": "Martial Arts",
+      "color": "#8B5CF6",
+      "translations": {
+        "en": "Kung Fu",
+        "pt": "Kung Fu"
+      }
+    },
+    {
+      "id": 55,
+      "name": "Muay Thai",
+      "icon": "🥊",
+      "category": "Martial Arts",
+      "color": "#EF4444",
+      "translations": {
+        "en": "Muay Thai",
+        "pt": "Muay Thai"
+      }
+    },
+    {
+      "id": 56,
+      "name": "Ballet",
+      "icon": "🩰",
+      "category": "Dance",
+      "color": "#EC4899",
+      "translations": {
+        "en": "Ballet",
+        "pt": "Balé"
+      }
+    },
+    {
+      "id": 57,
+      "name": "Salsa",
+      "icon": "💃",
+      "category": "Dance",
+      "color": "#F43F5E",
+      "translations": {
+        "en": "Salsa",
+        "pt": "Salsa"
+      }
+    },
+    {
+      "id": 58,
+      "name": "Hip Hop",
+      "icon": "🕺",
+      "category": "Dance",
+      "color": "#8B5CF6",
+      "translations": {
+        "en": "Hip Hop",
+        "pt": "Hip Hop"
+      }
+    },
+    {
+      "id": 59,
+      "name": "Tango",
+      "icon": "💃",
+      "category": "Dance",
+      "color": "#B91C1C",
+      "translations": {
+        "en": "Tango",
+        "pt": "Tango"
+      }
+    },
+    {
+      "id": 60,
+      "name": "Waltz",
+      "icon": "💃",
+      "category": "Dance",
+      "color": "#6366F1",
+      "translations": {
+        "en": "Waltz",
+        "pt": "Valsa"
+      }
+    },
+    {
+      "id": 61,
+      "name": "Rock Climbing",
+      "icon": "🧗",
+      "category": "Extreme Sports",
+      "color": "#F97316",
+      "translations": {
+        "en": "Rock Climbing",
+        "pt": "Escalada"
+      }
+    },
+    {
+      "id": 62,
+      "name": "Skydiving",
+      "icon": "🪂",
+      "category": "Extreme Sports",
+      "color": "#8B5CF6",
+      "translations": {
+        "en": "Skydiving",
+        "pt": "Paraquedismo"
+      }
+    },
+    {
+      "id": 63,
+      "name": "Bungee Jumping",
+      "icon": "🪂",
+      "category": "Extreme Sports",
+      "color": "#EF4444",
+      "translations": {
+        "en": "Bungee Jumping",
+        "pt": "Bungee Jump"
+      }
+    },
+    {
+      "id": 64,
+      "name": "Snowboarding",
+      "icon": "🏂",
+      "category": "Extreme Sports",
+      "color": "#06B6D4",
+      "translations": {
+        "en": "Snowboarding",
+        "pt": "Snowboard"
+      }
+    },
+    {
+      "id": 65,
+      "name": "Skateboarding",
+      "icon": "🛹",
+      "category": "Extreme Sports",
+      "color": "#F59E0B",
+      "translations": {
+        "en": "Skateboarding",
+        "pt": "Skate"
+      }
+    },
+    {
+      "id": 66,
+      "name": "Chess",
+      "icon": "♟️",
+      "category": "Indoor Games",
+      "color": "#3B82F6",
+      "translations": {
+        "en": "Chess",
+        "pt": "Xadrez"
+      }
+    },
+    {
+      "id": 67,
+      "name": "Poker",
+      "icon": "🃏",
+      "category": "Indoor Games",
+      "color": "#EF4444",
+      "translations": {
+        "en": "Poker",
+        "pt": "Pôquer"
+      }
+    },
+    {
+      "id": 68,
+      "name": "Board Games",
+      "icon": "🎲",
+      "category": "Indoor Games",
+      "color": "#10B981",
+      "translations": {
+        "en": "Board Games",
+        "pt": "Jogos de Tabuleiro"
+      }
+    },
+    {
+      "id": 69,
+      "name": "Video Games",
+      "icon": "🎮",
+      "category": "Indoor Games",
+      "color": "#8B5CF6",
+      "translations": {
+        "en": "Video Games",
+        "pt": "Videogames"
+      }
+    },
+    {
+      "id": 70,
+      "name": "Puzzle",
+      "icon": "🧩",
+      "category": "Indoor Games",
+      "color": "#F59E0B",
+      "translations": {
+        "en": "Puzzle",
+        "pt": "Quebra-Cabeça"
+      }
+    },
+    {
+      "id": 71,
+      "name": "Movie Night",
+      "icon": "🎬",
+      "category": "Other",
+      "color": "#6366F1",
+      "translations": {
+        "en": "Movie Night",
+        "pt": "Noite de Cinema"
+      }
+    },
+    {
+      "id": 72,
+      "name": "Cooking Together",
+      "icon": "👨‍🍳",
+      "category": "Other",
+      "color": "#F97316",
+      "translations": {
+        "en": "Cooking Together",
+        "pt": "Cozinhando Juntos"
+      }
+    },
+    {
+      "id": 73,
+      "name": "Gardening",
+      "icon": "🌱",
+      "category": "Other",
+      "color": "#10B981",
+      "translations": {
+        "en": "Gardening",
+        "pt": "Jardinagem"
+      }
+    },
+    {
+      "id": 74,
+      "name": "Photography",
+      "icon": "📸",
+      "category": "Other",
+      "color": "#8B5CF6",
+      "translations": {
+        "en": "Photography",
+        "pt": "Fotografia"
+      }
+    },
+    {
+      "id": 75,
+      "name": "Painting",
+      "icon": "🎨",
+      "category": "Other",
+      "color": "#EC4899",
+      "translations": {
+        "en": "Painting",
+        "pt": "Pintura"
+      }
+    },
+    {
+      "id": 76,
+      "name": "Reading Together",
+      "icon": "📚",
+      "category": "Other",
+      "color": "#3B82F6",
+      "translations": {
+        "en": "Reading Together",
+        "pt": "Lendo Juntos"
+      }
+    },
+    {
+      "id": 77,
+      "name": "Music Session",
+      "icon": "🎵",
+      "category": "Other",
+      "color": "#F59E0B",
+      "translations": {
+        "en": "Music Session",
+        "pt": "Sessão de Música"
+      }
+    },
+    {
+      "id": 78,
+      "name": "Stargazing",
+      "icon": "⭐",
+      "category": "Other",
+      "color": "#6366F1",
+      "translations": {
+        "en": "Stargazing",
+        "pt": "Observar Estrelas"
+      }
+    },
+    {
+      "id": 79,
+      "name": "Hiking",
+      "icon": "🏔️",
+      "category": "Other",
+      "color": "#10B981",
+      "translations": {
+        "en": "Hiking",
+        "pt": "Caminhada"
+      }
+    },
+    {
+      "id": 80,
+      "name": "Camping",
+      "icon": "⛺",
+      "category": "Other",
+      "color": "#8B5CF6",
+      "translations": {
+        "en": "Camping",
+        "pt": "Acampamento"
+      }
+    },
+    {
+      "id": 81,
+      "name": "Fishing",
+      "icon": "🎣",
+      "category": "Other",
+      "color": "#06B6D4",
+      "translations": {
+        "en": "Fishing",
+        "pt": "Pesca"
+      }
+    },
+    {
+      "id": 82,
+      "name": "Bird Watching",
+      "icon": "🐦",
+      "category": "Other",
+      "color": "#F97316",
+      "translations": {
+        "en": "Bird Watching",
+        "pt": "Observação de Aves"
+      }
+    },
+    {
+      "id": 83,
+      "name": "Meditation",
+      "icon": "🧘‍♂️",
+      "category": "Other",
+      "color": "#A855F7",
+      "translations": {
+        "en": "Meditation",
+        "pt": "Meditação"
+      }
+    },
+    {
+      "id": 84,
+      "name": "Spa Day",
+      "icon": "💆‍♀️",
+      "category": "Other",
+      "color": "#EC4899",
+      "translations": {
+        "en": "Spa Day",
+        "pt": "Dia de Spa"
+      }
+    },
+    {
+      "id": 85,
+      "name": "Wine Tasting",
+      "icon": "🍷",
+      "category": "Other",
+      "color": "#B91C1C",
+      "translations": {
+        "en": "Wine Tasting",
+        "pt": "Degustação de Vinho"
+      }
+    },
+    {
+      "id": 86,
+      "name": "Coffee Date",
+      "icon": "☕",
+      "category": "Other",
+      "color": "#8B5CF6",
+      "translations": {
+        "en": "Coffee Date",
+        "pt": "Encontro para Café"
+      }
+    },
+    {
+      "id": 87,
+      "name": "Ice Cream",
+      "icon": "🍦",
+      "category": "Other",
+      "color": "#06B6D4",
+      "translations": {
+        "en": "Ice Cream",
+        "pt": "Sorvete"
+      }
+    },
+    {
+      "id": 88,
+      "name": "Picnic",
+      "icon": "🧺",
+      "category": "Other",
+      "color": "#10B981",
+      "translations": {
+        "en": "Picnic",
+        "pt": "Piquenique"
+      }
+    },
+    {
+      "id": 89,
+      "name": "Beach Day",
+      "icon": "🏖️",
+      "category": "Other",
+      "color": "#F59E0B",
+      "translations": {
+        "en": "Beach Day",
+        "pt": "Dia na Praia"
+      }
+    },
+    {
+      "id": 90,
+      "name": "Museum Visit",
+      "icon": "🏛️",
+      "category": "Other",
+      "color": "#6366F1",
+      "translations": {
+        "en": "Museum Visit",
+        "pt": "Visita ao Museu"
+      }
+    },
+    {
+      "id": 91,
+      "name": "Concert",
+      "icon": "🎤",
+      "category": "Other",
+      "color": "#EC4899",
+      "translations": {
+        "en": "Concert",
+        "pt": "Show"
+      }
+    },
+    {
+      "id": 92,
+      "name": "Theater",
+      "icon": "🎭",
+      "category": "Other",
+      "color": "#8B5CF6",
+      "translations": {
+        "en": "Theater",
+        "pt": "Teatro"
+      }
+    },
+    {
+      "id": 93,
+      "name": "Art Gallery",
+      "icon": "🖼️",
+      "category": "Other",
+      "color": "#F97316",
+      "translations": {
+        "en": "Art Gallery",
+        "pt": "Galeria de Arte"
+      }
+    },
+    {
+      "id": 94,
+      "name": "Library Visit",
+      "icon": "📚",
+      "category": "Other",
+      "color": "#3B82F6",
+      "translations": {
+        "en": "Library Visit",
+        "pt": "Visita à Biblioteca"
+      }
+    },
+    {
+      "id": 95,
+      "name": "Bookstore",
+      "icon": "📖",
+      "category": "Other",
+      "color": "#10B981",
+      "translations": {
+        "en": "Bookstore",
+        "pt": "Livraria"
+      }
+    },
+    {
+      "id": 96,
+      "name": "Flea Market",
+      "icon": "🛍️",
+      "category": "Other",
+      "color": "#F59E0B",
+      "translations": {
+        "en": "Flea Market",
+        "pt": "Feira de Usados"
+      }
+    },
+    {
+      "id": 97,
+      "name": "Antique Shop",
+      "icon": "🏺",
+      "category": "Other",
+      "color": "#8B5CF6",
+      "translations": {
+        "en": "Antique Shop",
+        "pt": "Loja de Antiguidades"
+      }
+    },
+    {
+      "id": 98,
+      "name": "Craft Fair",
+      "icon": "🎨",
+      "category": "Other",
+      "color": "#EC4899",
+      "translations": {
+        "en": "Craft Fair",
+        "pt": "Feira de Artesanato"
+      }
+    },
+    {
+      "id": 99,
+      "name": "Farmers Market",
+      "icon": "🥕",
+      "category": "Other",
+      "color": "#10B981",
+      "translations": {
+        "en": "Farmers Market",
+        "pt": "Feira de Produtores"
+      }
+    },
+    {
+      "id": 100,
+      "name": "Food Festival",
+      "icon": "🍕",
+      "category": "Other",
+      "color": "#F97316",
+      "translations": {
+        "en": "Food Festival",
+        "pt": "Festival de Comida"
+      }
+    }
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "app": {
+    "name": "Compartilhamento Instantâneo",
+    "title": "Post de Atividade",
+    "subtitle": "Crie e compartilhe cartões de atividade bonitos"
+  },
+  "search": {
+    "placeholder": "Pesquisar atividades...",
+    "noResults": {
+      "title": "Nenhuma atividade encontrada",
+      "subtitle": "Tente ajustar sua pesquisa ou critérios de filtro"
+    }
+  },
+  "categories": {
+    "all": "Todas as Categorias",
+    "sports": "Esportes",
+    "fitness": "Fitness",
+    "waterSports": "Esportes Aquáticos",
+    "martialArts": "Artes Marciais",
+    "dance": "Dança",
+    "extremeSports": "Esportes Radicais",
+    "indoorGames": "Jogos de Interior",
+    "intimacy": "Intimidade",
+    "emotional": "Emocional",
+    "other": "Outros"
+  },
+  "stats": {
+    "totalActivities": "Total de Atividades",
+    "categories": "Categorias",
+    "showingResults": "Mostrando Resultados"
+  },
+  "form": {
+    "selectedActivity": "Atividade Selecionada",
+    "cardColor": "Cor do Cartão",
+    "activityDate": "Data da Atividade",
+    "rating": "Avaliação",
+    "createButton": "Criar Cartão de Atividade"
+  },
+  "alerts": {
+    "noActivitySelected": {
+      "title": "Nenhuma Atividade Selecionada",
+      "message": "Por favor, selecione uma atividade da grade acima para criar seu cartão."
+    },
+    "noRatingSelected": {
+      "title": "Nenhuma Avaliação Selecionada",
+      "message": "Por favor, selecione uma avaliação para sua atividade."
+    },
+    "success": {
+      "title": "Sucesso",
+      "message": "Cartão de atividade criado com sucesso!"
+    }
+  },
+  "activities": {
+    "title": "Suas Atividades",
+    "count": "atividades",
+    "noActivities": {
+      "title": "Nenhuma atividade criada ainda",
+      "subtitle": "Crie sua primeira atividade usando o painel acima"
+    }
+  },
+  "card": {
+    "activityDate": "Data da Atividade",
+    "rating": "Avaliação",
+    "shareButton": "Compartilhar Cartão",
+    "creating": "Criando...",
+    "createdWith": "Criado com Compartilhamento Instantâneo"
+  },
+  "loading": "Carregando atividades..."
+}

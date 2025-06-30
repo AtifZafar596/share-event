@@ -1,0 +1,69 @@
+{
+  "app": {
+    "name": "Instant share",
+    "title": "Activity Post",
+    "subtitle": "Create & share beautiful activity cards"
+  },
+  "search": {
+    "placeholder": "Search activities...",
+    "noResults": {
+      "title": "No activities found",
+      "subtitle": "Try adjusting your search or filter criteria"
+    }
+  },
+  "categories": {
+    "all": "All Categories",
+    "sports": "Sports",
+    "fitness": "Fitness",
+    "waterSports": "Water Sports",
+    "martialArts": "Martial Arts",
+    "dance": "Dance",
+    "extremeSports": "Extreme Sports",
+    "indoorGames": "Indoor Games",
+    "intimacy": "Intimacy",
+    "emotional": "Emotional",
+    "other": "Other"
+  },
+  "stats": {
+    "totalActivities": "Total Activities",
+    "categories": "Categories",
+    "showingResults": "Showing Results"
+  },
+  "form": {
+    "selectedActivity": "Selected Activity",
+    "cardColor": "Card Color",
+    "activityDate": "Activity Date",
+    "rating": "Rating",
+    "createButton": "Create Activity Card"
+  },
+  "alerts": {
+    "noActivitySelected": {
+      "title": "No Activity Selected",
+      "message": "Please select an activity from the grid above to create your card."
+    },
+    "noRatingSelected": {
+      "title": "No Rating Selected",
+      "message": "Please select a rating for your activity."
+    },
+    "success": {
+      "title": "Success",
+      "message": "Activity card created successfully!"
+    }
+  },
+  "activities": {
+    "title": "Your Activities",
+    "count": "activities",
+    "noActivities": {
+      "title": "No activities created yet",
+      "subtitle": "Create your first activity using the panel above"
+    }
+  },
+  "card": {
+    "activityDate": "Activity Date",
+    "rating": "Rating",
+    "shareButton": "Share Card",
+    "creating": "Creating...",
+    "createdWith": "Created with Instant share"
+  },
+  "loading": "Loading activities..."
+}
