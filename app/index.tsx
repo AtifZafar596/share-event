@@ -9,6 +9,7 @@ import {
   Alert,
   Dimensions,
   Image,
+  Platform,
   ScrollView,
   StyleSheet,
   Text,
@@ -362,6 +363,14 @@ export default function HomeScreen() {
     scrollViewRef.current?.scrollTo({ x: 0, animated: true });
   };
 
+  // Debug: Log categoriesList and categoryFilter
+  console.log(
+    "categoriesList:",
+    categoriesList,
+    "categoryFilter:",
+    categoryFilter
+  );
+
   if (isLoading) {
     return (
       <SafeAreaView style={styles.container}>
@@ -457,14 +466,20 @@ export default function HomeScreen() {
                 selectedValue={categoryFilter}
                 onValueChange={handleCategoryFilterChange}
                 style={{ width: "100%", height: 48 }}
-                itemStyle={{ fontSize: 16 }}
+                {...(Platform.OS === "ios"
+                  ? { itemStyle: { fontSize: 16 } }
+                  : {})}
                 dropdownIconColor="#2563eb"
                 mode="dropdown"
               >
                 {categoriesList.map((cat) => (
                   <Picker.Item
                     key={cat.value}
-                    label={cat.label}
+                    label={
+                      typeof cat.label === "string" && cat.label.trim()
+                        ? cat.label
+                        : "Category"
+                    }
                     value={cat.value}
                   />
                 ))}
