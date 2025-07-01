@@ -1,4 +1,3 @@
-import * as MediaLibrary from "expo-media-library";
 import * as Sharing from "expo-sharing";
 import { useRef, useState } from "react";
 import { Alert } from "react-native";
@@ -27,26 +26,6 @@ export const useCardSharing = () => {
       // Capture the card as an image
       const uri = await (viewShotRef.current as any).capture();
 
-      // Request media library permissions
-      const { status } = await MediaLibrary.requestPermissionsAsync();
-      if (status !== "granted") {
-        Alert.alert(
-          "Permission Required",
-          "Please grant permission to save event cards to your photo library.",
-          [
-            { text: "Cancel", style: "cancel" },
-            {
-              text: "Settings",
-              onPress: () => MediaLibrary.requestPermissionsAsync(),
-            },
-          ]
-        );
-        return;
-      }
-
-      // Save to media library
-      await MediaLibrary.saveToLibraryAsync(uri);
-
       // Share the image
       if (await Sharing.isAvailableAsync()) {
         await Sharing.shareAsync(uri, {
@@ -54,19 +33,18 @@ export const useCardSharing = () => {
           dialogTitle: `Share ${event.name}`,
           UTI: "public.png",
         });
+        Alert.alert(
+          "Success!",
+          `"${event.name}" has been shared successfully!`,
+          [{ text: "OK" }]
+        );
       } else {
         Alert.alert(
           "Sharing Not Available",
-          "Sharing is not available on this device. The card has been saved to your photo library.",
+          "Sharing is not available on this device.",
           [{ text: "OK" }]
         );
       }
-
-      Alert.alert(
-        "Success!",
-        `"${event.name}" has been saved to your photo library and shared successfully!`,
-        [{ text: "OK" }]
-      );
 
       // Call the completion callback if provided
       onComplete?.();
