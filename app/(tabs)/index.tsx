@@ -83,7 +83,7 @@ export default function HomeScreen() {
   useEffect(() => {
     const loadActivitiesData = async () => {
       try {
-        const data = require("../assets/data/activities.json");
+        const data = require("../../assets/data/activities.json");
         setActivitiesData(data);
         setIsLoading(false);
       } catch (error) {
@@ -393,7 +393,7 @@ export default function HomeScreen() {
         <View style={styles.header}>
           <View style={styles.headerIconContainer}>
             <Image
-              source={require("../assets/images/logo.png")}
+              source={require("../../assets/images/logo.png")}
               style={{
                 width: moderateScale(64),
                 height: moderateScale(64),
@@ -962,7 +962,7 @@ export default function HomeScreen() {
                 </Text>
                 <View style={styles.captureLogo}>
                   <Image
-                    source={require("../assets/images/logo.png")}
+                    source={require("../../assets/images/logo.png")}
                     style={{
                       width: moderateScale(20),
                       height: moderateScale(20),

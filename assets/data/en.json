@@ -65,5 +65,67 @@
     "creating": "Creating...",
     "createdWith": "Created with Instant share"
   },
-  "loading": "Loading activities..."
+  "loading": "Loading activities...",
+  "navigation": {
+    "home": "Home",
+    "explore": "Explore"
+  },
+  "explore": {
+    "header": {
+      "title": "Features & Tips",
+      "subtitle": "Discover what you can do with Instant share"
+    },
+    "features": {
+      "title": "App Features",
+      "createCards": {
+        "title": "Create Event Cards",
+        "description": "Design beautiful event cards with custom names, categories, and ratings"
+      },
+      "categories": {
+        "title": "Multiple Categories",
+        "description": "Choose from various activity categories and types"
+      },
+      "rating": {
+        "title": "Interactive Rating",
+        "description": "Rate your events with an interactive 5-star system"
+      },
+      "sharing": {
+        "title": "Social Media Sharing",
+        "description": "Share your event cards as images on any social media platform"
+      },
+      "design": {
+        "title": "Responsive Design",
+        "description": "Optimized for all screen sizes with modern UI/UX"
+      },
+      "crossPlatform": {
+        "title": "Cross Platform",
+        "description": "Works seamlessly on iOS, Android, and Web"
+      }
+    },
+    "howToUse": {
+      "title": "How to Use",
+      "tips": [
+        "Tap the category buttons to select your event type",
+        "Use the star rating to rate your event from 1-5 stars",
+        "Click \"Share Card\" to save and share your event card",
+        "Your cards are automatically saved to your device",
+        "Share cards on Instagram, Facebook, Twitter, or any social platform"
+      ]
+    },
+    "social": {
+      "title": "Share Your Events",
+      "description": "Create beautiful event cards and share them with friends and family on social media platforms. Your cards will be saved as high-quality images that you can post anywhere!",
+      "platforms": {
+        "instagram": "Instagram",
+        "facebook": "Facebook",
+        "twitter": "Twitter",
+        "tiktok": "TikTok"
+      }
+    },
+    "appInfo": {
+      "title": "Instant share",
+      "version": "Version 1.0.0",
+      "description": "A modern mobile application for creating and sharing beautiful event cards. Built with React Native and Expo for cross-platform compatibility."
+    }
+  }
 }

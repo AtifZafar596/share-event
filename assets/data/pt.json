@@ -65,5 +65,67 @@
     "creating": "Criando...",
     "createdWith": "Criado com Compartilhamento Instantâneo"
   },
-  "loading": "Carregando atividades..."
+  "loading": "Carregando atividades...",
+  "navigation": {
+    "home": "Início",
+    "explore": "Explorar"
+  },
+  "explore": {
+    "header": {
+      "title": "Recursos e Dicas",
+      "subtitle": "Descubra o que você pode fazer com o Compartilhamento Instantâneo"
+    },
+    "features": {
+      "title": "Recursos do App",
+      "createCards": {
+        "title": "Criar Cartões de Evento",
+        "description": "Crie cartões de evento bonitos com nomes, categorias e avaliações personalizadas"
+      },
+      "categories": {
+        "title": "Múltiplas Categorias",
+        "description": "Escolha entre várias categorias e tipos de atividades"
+      },
+      "rating": {
+        "title": "Avaliação Interativa",
+        "description": "Avalie seus eventos com um sistema interativo de 5 estrelas"
+      },
+      "sharing": {
+        "title": "Compartilhamento Social",
+        "description": "Compartilhe seus cartões de evento como imagens em qualquer plataforma social"
+      },
+      "design": {
+        "title": "Design Responsivo",
+        "description": "Otimizado para todos os tamanhos de tela com UI/UX moderna"
+      },
+      "crossPlatform": {
+        "title": "Multiplataforma",
+        "description": "Funciona perfeitamente no iOS, Android e Web"
+      }
+    },
+    "howToUse": {
+      "title": "Como Usar",
+      "tips": [
+        "Toque nos botões de categoria para selecionar o tipo do seu evento",
+        "Use a avaliação em estrelas para avaliar seu evento de 1-5 estrelas",
+        "Clique em \"Compartilhar Cartão\" para salvar e compartilhar seu cartão de evento",
+        "Seus cartões são automaticamente salvos no seu dispositivo",
+        "Compartilhe cartões no Instagram, Facebook, Twitter ou qualquer plataforma social"
+      ]
+    },
+    "social": {
+      "title": "Compartilhe Seus Eventos",
+      "description": "Crie cartões de evento bonitos e compartilhe-os com amigos e família nas plataformas de mídia social. Seus cartões serão salvos como imagens de alta qualidade que você pode postar em qualquer lugar!",
+      "platforms": {
+        "instagram": "Instagram",
+        "facebook": "Facebook",
+        "twitter": "Twitter",
+        "tiktok": "TikTok"
+      }
+    },
+    "appInfo": {
+      "title": "Compartilhamento Instantâneo",
+      "version": "Versão 1.0.0",
+      "description": "Um aplicativo móvel moderno para criar e compartilhar cartões de evento bonitos. Construído com React Native e Expo para compatibilidade multiplataforma."
+    }
+  }
 }
