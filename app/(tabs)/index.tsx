@@ -431,10 +431,11 @@ export default function HomeScreen() {
               <TextInput
                 style={{
                   width: "100%",
-                  height: 48,
+                  height: Platform.OS === "ios" ? 50 : 56,
                   backgroundColor: "#fff",
                   borderRadius: 8,
                   paddingHorizontal: 16,
+                  paddingVertical: 4,
                   fontSize: 16,
                   borderWidth: 1,
                   borderColor: "#e5e7eb",
@@ -447,6 +448,9 @@ export default function HomeScreen() {
                 numberOfLines={1}
                 maxLength={50}
                 textAlignVertical="center"
+                multiline={false}
+                scrollEnabled={false}
+                textBreakStrategy="simple"
               />
             </View>
             <View
@@ -465,9 +469,13 @@ export default function HomeScreen() {
               <Picker
                 selectedValue={categoryFilter}
                 onValueChange={handleCategoryFilterChange}
-                style={{ width: "100%", height: 48 }}
+                style={{
+                  width: "100%",
+                  height: Platform.OS === "ios" ? 50 : 56,
+                  paddingVertical: 4,
+                }}
                 {...(Platform.OS === "ios"
-                  ? { itemStyle: { fontSize: 16 } }
+                  ? { itemStyle: { fontSize: 16, height: 50 } }
                   : {})}
                 dropdownIconColor="#2563eb"
                 mode="dropdown"
@@ -629,17 +637,23 @@ export default function HomeScreen() {
                     <Text style={{ fontSize: 36 }}>{item.icon}</Text>
                   </View>
                   <Text
+                    key={`activity-name-${item.id}-${search}`}
                     style={{
-                      fontSize: 16,
+                      fontSize: 14,
                       fontWeight: "600",
                       color: "#1f2937",
                       marginBottom: 2,
                       textAlign: "center",
+                      width: "100%",
                     }}
+                    numberOfLines={1}
+                    ellipsizeMode="tail"
+                    adjustsFontSizeToFit={false}
                   >
                     {getActivityTranslation(item.name, "name")}
                   </Text>
                   <Text
+                    key={`activity-category-${item.id}-${search}`}
                     style={{
                       backgroundColor: "rgba(255,255,255,0.6)",
                       color: "#374151",
@@ -649,7 +663,12 @@ export default function HomeScreen() {
                       fontSize: 12,
                       fontWeight: "500",
                       marginBottom: 4,
+                      maxWidth: "90%",
+                      alignSelf: "center",
                     }}
+                    numberOfLines={1}
+                    ellipsizeMode="tail"
+                    adjustsFontSizeToFit={false}
                   >
                     {getCategoryTranslation(item.category)}
                   </Text>
@@ -723,10 +742,18 @@ export default function HomeScreen() {
                     </Text>
                   </View>
                   <View style={{ flex: 1 }}>
-                    <Text style={styles.selectedActivityName}>
+                    <Text
+                      style={styles.selectedActivityName}
+                      numberOfLines={1}
+                      ellipsizeMode="tail"
+                    >
                       {getActivityTranslation(selectedActivity.name, "name")}
                     </Text>
-                    <Text style={styles.selectedActivityCategory}>
+                    <Text
+                      style={styles.selectedActivityCategory}
+                      numberOfLines={1}
+                      ellipsizeMode="tail"
+                    >
                       {getCategoryTranslation(selectedActivity.category)}
                     </Text>
                   </View>
